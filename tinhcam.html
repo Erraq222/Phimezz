@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Phim Online - Tình Cảm</title>
   <style>
     body {
@@ -15,6 +15,7 @@
       padding: 10px 20px;
       display: flex;
       align-items: center;
+      position: relative;
     }
     .menu-icon {
       font-size: 24px;
@@ -26,6 +27,44 @@
       font-weight: bold;
       color: white;
       text-decoration: none;
+      flex-grow: 1;
+    }
+    .search-icon {
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .search-box {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 50px;
+      background-color: #1f1f1f;
+      padding: 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+    }
+    .search-box input {
+      padding: 6px;
+      width: 200px;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: white;
+    }
+    .search-box input::placeholder {
+      color: #bbb;
+    }
+    .search-box button {
+      padding: 6px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
     .dropdown {
       display: none;
@@ -56,6 +95,7 @@
       border: none;
       border-radius: 5px;
       margin-top: 10px;
+      margin-left: 20px;
     }
     .filters {
       display: none;
@@ -69,23 +109,18 @@
       padding: 6px;
       border-radius: 6px;
       border: none;
-    }
-    .search-box {
-      margin-top: 10px;
-    }
-    .search-box input {
-      padding: 6px;
-      width: 200px;
-      border-radius: 6px;
-      border: none;
-    }
-    .search-box button {
-      padding: 6px 10px;
-      background-color: #555;
+      background-color: #333;
       color: white;
+    }
+    .filters button.filter-submit {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #555;
       border: none;
       border-radius: 6px;
+      color: white;
       cursor: pointer;
+      font-weight: bold;
     }
     h1 {
       margin: 20px;
@@ -103,6 +138,11 @@
   <header>
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <a class="site-title" href="index.html">Phim Online</a>
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>
+    <div class="search-box" id="searchBox">
+      <input type="text" placeholder="Tìm kiếm phim..." />
+      <button>Tìm</button>
+    </div>
   </header>
 
   <div class="dropdown" id="dropdownMenu">
@@ -157,11 +197,8 @@
         <option>Mới nhất</option>
         <option>Lượt xem</option>
       </select>
-
-      <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm phim...">
-        <button>Tìm</button>
-      </div>
+      <!-- Nút Lọc phim mới -->
+      <button class="filter-submit" onclick="applyFilter()">Lọc phim</button>
     </div>
   </div>
 
@@ -176,17 +213,31 @@
       const menu = document.getElementById("dropdownMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-
     function toggleFilters() {
       const filters = document.getElementById("filterSection");
       filters.style.display = filters.style.display === "block" ? "none" : "block";
     }
-
+    function toggleSearch() {
+      const search = document.getElementById("searchBox");
+      search.style.display = search.style.display === "flex" ? "none" : "flex";
+    }
+    function applyFilter() {
+      alert("Đã áp dụng bộ lọc phim! (Tính năng demo)");
+      // Đây anh có thể thêm xử lý lọc phim thực tế cho em sau
+    }
     window.onclick = function(event) {
-      if (!event.target.matches('.menu-icon')) {
+      if (
+        !event.target.closest(".menu-icon") &&
+        !event.target.closest(".search-icon") &&
+        !event.target.closest("#searchBox")
+      ) {
         const dropdown = document.getElementById("dropdownMenu");
+        const search = document.getElementById("searchBox");
         if (dropdown && dropdown.style.display === "block") {
           dropdown.style.display = "none";
+        }
+        if (search && search.style.display === "flex") {
+          search.style.display = "none";
         }
       }
     };
