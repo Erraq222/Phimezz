@@ -2,180 +2,139 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Phim Online</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       background-color: #121212;
-      color: #f0f0f0;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     header {
       background-color: #1f1f1f;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
-
-    /* Container cho menu và logo */
-    .menu-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    a.logo {
-      color: #ff4757;
-      text-decoration: none;
-      font-size: 1.8rem;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    /* Hamburger menu style */
-    .hamburger {
-      width: 30px;
-      height: 22px;
-      cursor: pointer;
-      position: relative;
-      display: inline-block;
-    }
-
-    .hamburger span {
-      background: #ff4757;
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      border-radius: 2px;
-      opacity: 1;
-      left: 0;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .hamburger span:nth-child(1) {
-      top: 0;
-    }
-    .hamburger span:nth-child(2) {
-      top: 9px;
-    }
-    .hamburger span:nth-child(3) {
-      top: 18px;
-    }
-
-    /* Dropdown container */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Dropdown content - hidden by default */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #222;
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.8);
-      border-radius: 6px;
-      overflow: hidden;
-      z-index: 10;
-      top: 35px;
-      left: 0;
-    }
-
-    /* Show dropdown on hover of the hamburger */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    /* Dropdown links */
-    .dropdown-content a,
-    .submenu-btn {
-      color: white;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .dropdown-content a:hover,
-    .submenu-btn:hover {
-      background-color: #ff4757;
-    }
-
-    /* Submenu container */
-    .submenu {
-      display: none;
-      background-color: #333;
-      margin-left: 10px;
-      border-radius: 0 0 6px 6px;
-    }
-
-    /* Show submenu on hover */
-    .submenu-btn:hover + .submenu,
-    .submenu:hover {
-      display: block;
-      position: relative;
-      box-shadow: none;
-      margin-top: 0;
-      padding-left: 10px;
-    }
-
-    .submenu a {
       padding: 10px 20px;
-      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* Main content */
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    .left-section {
+      display: flex;
+      align-items: center;
     }
 
-    .welcome-text {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: #ff4757;
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .site-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .search-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      top: 50px;
+      left: 20px;
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown a {
+      color: white;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #555;
+    }
+
+    .search-box {
+      display: none;
+      padding: 10px 20px;
+      background-color: #1f1f1f;
+    }
+
+    .search-box input {
+      padding: 6px;
+      width: 200px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .search-box button {
+      padding: 6px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    h1 {
+      margin: 20px;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="menu-logo">
-      <div class="dropdown">
-        <div class="hamburger" aria-label="Menu" tabindex="0">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="dropdown-content">
-          <div class="submenu-btn">Thể Loại</div>
-          <div class="submenu">
-            <a href="tinhcam.html">Tình Cảm</a>
-            <a href="#">Hành Động</a>
-            <a href="#">Hài Hước</a>
-          </div>
-          <a href="#">Chủ Đề</a>
-          <a href="#">Phim Mới</a>
-          <a href="#">Phim Hot</a>
-        </div>
-      </div>
-      <a href="index.html" class="logo">PHIM ONLINE</a>
+    <div class="left-section">
+      <div class="menu-icon" onclick="toggleDropdown()">☰</div>
+      <a class="site-title" href="index.html">Phim Online</a>
     </div>
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>
   </header>
 
-  <main>
-    <div class="welcome-text">Chào mừng bạn đến với PHIM ONLINE!</div>
-    <p style="text-align:center; font-size:1.2rem;">
-      Đây là trang chủ của website phim online với giao diện tối, hiện đại.<br />
-      Di chuột vào dấu 3 gạch bên trái để mở menu thể loại và các mục khác.
-    </p>
-  </main>
+  <div class="dropdown" id="dropdownMenu">
+    <a href="#">Thể loại</a>
+    <a href="#">Chủ đề</a>
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim...">
+    <button>Tìm</button>
+  </div>
+
+  <h1>Trang Chủ</h1>
+  <p style="margin: 20px;">Chào mừng đến với Phim Online!</p>
+
+  <script>
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleSearch() {
+      const search = document.getElementById("searchBox");
+      search.style.display = search.style.display === "block" ? "none" : "block";
+    }
+
+    // Tự ẩn dropdown nếu click ra ngoài
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-icon')) {
+        const dropdown = document.getElementById("dropdownMenu");
+        if (dropdown && dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        }
+      }
+    };
+  </script>
+
 </body>
 </html>
