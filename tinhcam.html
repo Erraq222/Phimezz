@@ -36,6 +36,7 @@
       z-index: 1;
       border-radius: 8px;
       overflow: hidden;
+      min-width: 200px;
     }
     .dropdown a {
       color: white;
@@ -99,7 +100,6 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <a class="site-title" href="index.html">Phim Online</a>
@@ -107,6 +107,7 @@
 
   <div class="dropdown" id="dropdownMenu">
     <a href="#">Thể loại</a>
+    <a href="romance.html" style="padding-left: 30px;">Tình cảm</a>
     <a href="#">Chủ đề</a>
   </div>
 
@@ -181,7 +182,6 @@
       filters.style.display = filters.style.display === "block" ? "none" : "block";
     }
 
-    // Tự động ẩn dropdown khi click ra ngoài
     window.onclick = function(event) {
       if (!event.target.matches('.menu-icon')) {
         const dropdown = document.getElementById("dropdownMenu");
@@ -191,6 +191,5 @@
       }
     };
   </script>
-
 </body>
 </html>
