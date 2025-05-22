@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim Tình Cảm</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      color: #f8d12f;
+      font-size: 1.5em;
+    }
+    .posters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .poster {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .poster:hover {
+      transform: scale(1.05);
+    }
+    .poster img {
+      width: 100%;
+      display: block;
+    }
+    .poster-title {
+      padding: 10px;
+      text-align: center;
+      font-size: 1em;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      background-color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <header>Phim Thể Loại Tình Cảm</header>
+  <div class="posters">
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=Your+Name" alt="Your Name">
+      <div class="poster-title">Your Name</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=Titanic" alt="Titanic">
+      <div class="poster-title">Titanic</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=La+La+Land" alt="La La Land">
+      <div class="poster-title">La La Land</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=The+Notebook" alt="The Notebook">
+      <div class="poster-title">The Notebook</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=Me+Before+You" alt="Me Before You">
+      <div class="poster-title">Me Before You</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/180x270?text=About+Time" alt="About Time">
+      <div class="poster-title">About Time</div>
+    </div>
+  </div>
+  <footer>&copy; 2025 PHIM PLUS. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Phim - Chọn Thể Loại</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2em;
+      color: #f8d12f;
+    }
+    .genres {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    .genre-button {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .genre-button:hover {
+      background-color: #f8d12f;
+      color: #121212;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      background-color: #1a1a1a;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PHIM PLUS</h1>
+  </header>
+
+  <div class="genres">
+    <button class="genre-button" onclick="location.href='tinhcam.html'">Tình cảm</button>
+    <button class="genre-button">Hành động</button>
+    <button class="genre-button">Hài</button>
+    <button class="genre-button">Kinh dị</button>
+    <button class="genre-button">Hoạt hình</button>
+    <button class="genre-button">Khoa học viễn tưởng</button>
+  </div>
+
+  <footer>
+    &copy; 2025 PHIM PLUS. All rights reserved.
+  </footer>
+</body>
+</html>
