@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: #fff;
     }
@@ -72,27 +72,55 @@
       text-align: center;
       margin-bottom: 10px;
     }
-    .filters {
+
+    .filter-box {
       background-color: #1f1f1f;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 25px;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
       align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
-    .filters label {
-      margin-right: 5px;
-      font-size: 14px;
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
     }
-    .filters select {
-      padding: 6px 10px;
+
+    .filter-group label {
+      font-size: 13px;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+
+    .filter-group select {
+      padding: 8px;
       background-color: #2a2a2a;
-      color: white;
+      color: #fff;
       border: 1px solid #444;
       border-radius: 5px;
+      min-width: 120px;
     }
+
+    .search-button {
+      background-color: #ff4757;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .search-button:hover {
+      background-color: #e84150;
+    }
+
     .movie-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -112,8 +140,9 @@
       background-color: #ff4757;
       color: #121212;
     }
+
     @media (max-width: 600px) {
-      .filters {
+      .filter-box {
         flex-direction: column;
         align-items: stretch;
       }
@@ -147,29 +176,27 @@
   <main>
     <h1>Phim Tình Cảm</h1>
 
-    <div class="filters">
-      <div>
-        <label>Quốc gia:</label>
+    <div class="filter-box">
+      <div class="filter-group">
+        <label>Quốc gia</label>
         <select>
           <option>Tất cả</option>
-          <option>Anh</option>
-          <option>Pháp</option>
-          <option>Mỹ</option>
-          <option>Hàn Quốc</option>
-          <option>Nhật Bản</option>
           <option>Việt Nam</option>
+          <option>Hàn Quốc</option>
+          <option>Mỹ</option>
+          <option>Pháp</option>
         </select>
       </div>
-      <div>
-        <label>Loại phim:</label>
+      <div class="filter-group">
+        <label>Loại phim</label>
         <select>
           <option>Tất cả</option>
           <option>Phim lẻ</option>
           <option>Phim bộ</option>
         </select>
       </div>
-      <div>
-        <label>Thể loại:</label>
+      <div class="filter-group">
+        <label>Thể loại</label>
         <select>
           <option>Tất cả</option>
           <option>Tình cảm</option>
@@ -177,11 +204,11 @@
           <option>Hài hước</option>
         </select>
       </div>
-      <div>
-        <label>Năm SX:</label>
+      <div class="filter-group">
+        <label>Năm sản xuất</label>
         <select>
           <option>Tất cả</option>
-          <!-- Tạo dropdown từ 2025 về 2010 -->
+          <!-- Năm từ 2025 đến 2010 -->
           <script>
             for(let y=2025; y>=2010; y--) {
               document.write(`<option>${y}</option>`);
@@ -189,23 +216,25 @@
           </script>
         </select>
       </div>
-      <div>
-        <label>Sắp xếp:</label>
+      <div class="filter-group">
+        <label>Sắp xếp</label>
         <select>
           <option>Mới nhất</option>
           <option>Lượt xem</option>
         </select>
       </div>
+      <button class="search-button">Tìm kiếm</button>
     </div>
 
     <div class="movie-list">
       <div class="movie-item">The Notebook</div>
-      <div class="movie-item">Brokeback Mountain</div>
       <div class="movie-item">La La Land</div>
       <div class="movie-item">Pride & Prejudice</div>
-      <div class="movie-item">A Walk to Remember</div>
       <div class="movie-item">Before Sunrise</div>
+      <div class="movie-item">Brokeback Mountain</div>
+      <div class="movie-item">A Walk to Remember</div>
     </div>
   </main>
+
 </body>
 </html>
