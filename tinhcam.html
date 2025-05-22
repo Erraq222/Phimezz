@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Phim Tình Cảm - Phim Online</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       margin: 0;
@@ -59,9 +59,6 @@
     .dropdown-content a:hover {
       background-color: #ff4757;
     }
-    .submenu {
-      padding-left: 10px;
-    }
     main {
       padding: 20px;
       max-width: 1000px;
@@ -73,16 +70,44 @@
       margin-bottom: 10px;
     }
 
+    .filter-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: fit-content;
+      margin: 0 auto 15px;
+      font-size: 16px;
+      background-color: #1f1f1f;
+      padding: 8px 14px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .filter-toggle:hover {
+      background-color: #292929;
+    }
+
+    .filter-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      fill: #ff4757;
+    }
+
     .filter-box {
+      display: none;
       background-color: #1f1f1f;
       border-radius: 10px;
       padding: 20px;
       margin-bottom: 30px;
-      display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      gap: 15px;
       justify-content: space-between;
-      gap: 10px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .filter-box.active {
+      display: flex;
     }
 
     .filter-group {
@@ -112,13 +137,8 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
       font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .search-button:hover {
-      background-color: #e84150;
+      margin-top: 22px;
     }
 
     .movie-list {
@@ -126,25 +146,31 @@
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 20px;
     }
+
     .movie-item {
       background-color: #1f1f1f;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
       text-align: center;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       cursor: pointer;
     }
+
     .movie-item:hover {
       transform: scale(1.05);
       background-color: #ff4757;
       color: #121212;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 600px) {
       .filter-box {
         flex-direction: column;
-        align-items: stretch;
       }
     }
   </style>
@@ -154,20 +180,14 @@
   <header>
     <div class="dropdown">
       <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
       <div class="dropdown-content">
-        <div><strong style="padding: 10px; display: block;">Thể loại</strong></div>
-        <div class="submenu">
-          <a href="tinhcam.html">Tình Cảm</a>
-          <a href="#">Hành Động</a>
-          <a href="#">Hài Hước</a>
-        </div>
+        <strong style="padding: 10px; display: block;">Thể loại</strong>
+        <a href="tinhcam.html">Tình Cảm</a>
+        <a href="#">Hành Động</a>
+        <a href="#">Hài Hước</a>
         <a href="#">Chủ đề</a>
-        <a href="#">Phim mới</a>
-        <a href="#">Phim hot</a>
       </div>
     </div>
     <a class="logo" href="index.html">PHIM ONLINE</a>
@@ -176,7 +196,16 @@
   <main>
     <h1>Phim Tình Cảm</h1>
 
-    <div class="filter-box">
+    <!-- Filter Toggle Button -->
+    <div class="filter-toggle" onclick="toggleFilter()">
+      <svg class="filter-icon" viewBox="0 0 24 24">
+        <path d="M3 5h18v2H3V5zm4 6h10v2H7v-2zm2 6h6v2H9v-2z"/>
+      </svg>
+      Bộ lọc
+    </div>
+
+    <!-- Filter Section -->
+    <div id="filterBox" class="filter-box">
       <div class="filter-group">
         <label>Quốc gia</label>
         <select>
@@ -184,7 +213,6 @@
           <option>Việt Nam</option>
           <option>Hàn Quốc</option>
           <option>Mỹ</option>
-          <option>Pháp</option>
         </select>
       </div>
       <div class="filter-group">
@@ -201,16 +229,14 @@
           <option>Tất cả</option>
           <option>Tình cảm</option>
           <option>Hành động</option>
-          <option>Hài hước</option>
         </select>
       </div>
       <div class="filter-group">
         <label>Năm sản xuất</label>
         <select>
           <option>Tất cả</option>
-          <!-- Năm từ 2025 đến 2010 -->
           <script>
-            for(let y=2025; y>=2010; y--) {
+            for (let y = 2025; y >= 2010; y--) {
               document.write(`<option>${y}</option>`);
             }
           </script>
@@ -226,6 +252,7 @@
       <button class="search-button">Tìm kiếm</button>
     </div>
 
+    <!-- Movie List -->
     <div class="movie-list">
       <div class="movie-item">The Notebook</div>
       <div class="movie-item">La La Land</div>
@@ -236,5 +263,12 @@
     </div>
   </main>
 
+  <script>
+    function toggleFilter() {
+      const box = document.getElementById('filterBox');
+      box.classList.toggle('active');
+    }
+  </script>
+
 </body>
-</html>
+  </html>
