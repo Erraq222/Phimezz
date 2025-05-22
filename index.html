@@ -3,87 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trang Chủ Phim</title>
+  <title>Phim Online</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #eee;
-      margin: 0; padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      margin: 0;
     }
     header {
-      background: #1f1f1f;
+      background-color: #1e1e1e;
       padding: 20px;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
-      letter-spacing: 2px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
     header a {
-      color: inherit;
+      color: #ff4757;
       text-decoration: none;
     }
     nav {
-      background: #222;
-      padding: 10px 20px;
       display: flex;
-      gap: 15px;
       justify-content: center;
+      gap: 10px;
+      background-color: #222;
+      padding: 15px;
     }
     nav button {
-      background: #333;
+      background-color: #333;
       border: none;
+      color: white;
       padding: 10px 20px;
-      color: #eee;
-      font-size: 1rem;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      font-size: 1rem;
+      transition: background-color 0.3s;
     }
     nav button:hover {
-      background: #ff4757;
+      background-color: #ff4757;
     }
     .search-container {
+      max-width: 500px;
       margin: 20px auto;
-      max-width: 400px;
       text-align: center;
     }
     .search-container input {
       width: 80%;
-      padding: 10px 15px;
+      padding: 12px;
       font-size: 1rem;
+      border-radius: 8px;
       border: none;
-      border-radius: 5px;
-      outline: none;
-      box-shadow: 0 0 5px #ff4757;
-      background: #222;
-      color: #eee;
+      background-color: #222;
+      color: #fff;
+      box-shadow: 0 0 5px rgba(255,71,87,0.6);
     }
     .movie-list {
-      max-width: 800px;
-      margin: 20px auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
     .movie-item {
-      background: #222;
+      background-color: #1e1e1e;
+      border-radius: 10px;
       padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(255,71,87,0.3);
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
     .movie-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(255,71,87,0.7);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(255,71,87,0.4);
     }
     .movie-title {
+      margin-top: 10px;
       font-weight: bold;
       font-size: 1.1rem;
-      margin-top: 10px;
-      text-align: center;
     }
   </style>
 </head>
@@ -95,12 +93,12 @@
   <nav>
     <button onclick="location.href='index.html'">Trang Chủ</button>
     <button onclick="location.href='tinhcam.html'">Tình Cảm</button>
-    <button onclick="alert('Chưa có trang thể loại này!')">Hành Động</button>
-    <button onclick="alert('Chưa có trang thể loại này!')">Hài Hước</button>
+    <button onclick="alert('Trang Hành Động chưa có, em thêm sau nha')">Hành Động</button>
+    <button onclick="alert('Trang Hài Hước chưa có, em thêm sau nha')">Hài Hước</button>
   </nav>
 
   <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Tìm phim..." onkeyup="filterMovies()" />
+    <input type="text" id="searchInput" placeholder="Tìm tên phim..." onkeyup="filterMovies()" />
   </div>
 
   <div class="movie-list" id="movieList">
@@ -124,11 +122,7 @@
       const movies = document.querySelectorAll('.movie-item');
       movies.forEach(movie => {
         const title = movie.getAttribute('data-title').toLowerCase();
-        if (title.includes(input)) {
-          movie.style.display = 'block';
-        } else {
-          movie.style.display = 'none';
-        }
+        movie.style.display = title.includes(input) ? 'block' : 'none';
       });
     }
   </script>
