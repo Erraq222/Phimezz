@@ -11,26 +11,16 @@
       color: #f0f0f0;
       margin: 0;
     }
-    header {
-      background-color: #1e1e1e;
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    header a {
-      color: #ff4757;
-      text-decoration: none;
-    }
     nav {
       display: flex;
       justify-content: center;
       gap: 10px;
       background-color: #222;
       padding: 15px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-    nav button {
+    nav button, .dropbtn {
       background-color: #333;
       border: none;
       color: white;
@@ -40,14 +30,47 @@
       font-size: 1rem;
       transition: background-color 0.3s;
     }
-    nav button:hover {
+    nav button:hover, .dropbtn:hover {
       background-color: #ff4757;
     }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #222;
+      min-width: 160px;
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .search-container {
       max-width: 500px;
       margin: 20px auto;
       text-align: center;
     }
+
     .search-container input {
       width: 80%;
       padding: 12px;
@@ -58,6 +81,7 @@
       color: #fff;
       box-shadow: 0 0 5px rgba(255,71,87,0.6);
     }
+
     .movie-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -66,6 +90,7 @@
       margin: 30px auto;
       padding: 0 20px;
     }
+
     .movie-item {
       background-color: #1e1e1e;
       border-radius: 10px;
@@ -74,10 +99,12 @@
       transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
+
     .movie-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 20px rgba(255,71,87,0.4);
     }
+
     .movie-title {
       margin-top: 10px;
       font-weight: bold;
@@ -86,15 +113,17 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">Phim Online</a>
-  </header>
-
   <nav>
     <button onclick="location.href='index.html'">Trang Chủ</button>
-    <button onclick="location.href='tinhcam.html'">Tình Cảm</button>
-    <button onclick="alert('Trang Hành Động chưa có, em thêm sau nha')">Hành Động</button>
-    <button onclick="alert('Trang Hài Hước chưa có, em thêm sau nha')">Hài Hước</button>
+
+    <div class="dropdown">
+      <button class="dropbtn">Thể Loại</button>
+      <div class="dropdown-content">
+        <a href="tinhcam.html">Tình Cảm</a>
+        <a href="#">Hành Động</a>
+        <a href="#">Hài Hước</a>
+      </div>
+    </div>
   </nav>
 
   <div class="search-container">
