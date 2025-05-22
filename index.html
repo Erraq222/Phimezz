@@ -1,75 +1,130 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang Phim - Chọn Thể Loại</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trang Chủ Phim</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      margin: 0;
-      padding: 0;
+      background: #121212;
+      color: #eee;
+      margin: 0; padding: 0;
     }
     header {
-      background-color: #1f1f1f;
+      background: #1f1f1f;
       padding: 20px;
       text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
-    header h1 {
-      font-size: 2em;
-      color: #f8d12f;
-    }
-    .genres {
+    nav {
+      background: #222;
+      padding: 10px 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       gap: 15px;
-      margin: 40px auto;
-      max-width: 600px;
+      justify-content: center;
     }
-    .genre-button {
-      padding: 15px 25px;
+    nav button {
+      background: #333;
       border: none;
-      border-radius: 8px;
-      background-color: #2a2a2a;
-      color: #fff;
-      font-size: 1em;
+      padding: 10px 20px;
+      color: #eee;
+      font-size: 1rem;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
-    .genre-button:hover {
-      background-color: #f8d12f;
-      color: #121212;
+    nav button:hover {
+      background: #ff4757;
     }
-    footer {
+    .search-container {
+      margin: 20px auto;
+      max-width: 400px;
       text-align: center;
-      padding: 20px;
-      color: #999;
-      background-color: #1a1a1a;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
+    }
+    .search-container input {
+      width: 80%;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      box-shadow: 0 0 5px #ff4757;
+      background: #222;
+      color: #eee;
+    }
+    .movie-list {
+      max-width: 800px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      gap: 20px;
+    }
+    .movie-item {
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(255,71,87,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .movie-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(255,71,87,0.7);
+    }
+    .movie-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>PHIM PLUS</h1>
-  </header>
+  <header>Phim Online</header>
 
-  <div class="genres">
-    <button class="genre-button" onclick="location.href='tinhcam.html'">Tình cảm</button>
-    <button class="genre-button">Hành động</button>
-    <button class="genre-button">Hài</button>
-    <button class="genre-button">Kinh dị</button>
-    <button class="genre-button">Hoạt hình</button>
-    <button class="genre-button">Khoa học viễn tưởng</button>
+  <nav>
+    <button onclick="location.href='index.html'">Trang Chủ</button>
+    <button onclick="location.href='tinhcam.html'">Tình Cảm</button>
+    <button onclick="alert('Chưa có trang thể loại này!')">Hành Động</button>
+    <button onclick="alert('Chưa có trang thể loại này!')">Hài Hước</button>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Tìm phim..." onkeyup="filterMovies()" />
   </div>
 
-  <footer>
-    &copy; 2025 PHIM PLUS. All rights reserved.
-  </footer>
+  <div class="movie-list" id="movieList">
+    <div class="movie-item" data-title="Yêu Em Từ Cái Nhìn Đầu Tiên">
+      <div class="movie-title">Yêu Em Từ Cái Nhìn Đầu Tiên</div>
+    </div>
+    <div class="movie-item" data-title="Bản Tình Ca Mùa Đông">
+      <div class="movie-title">Bản Tình Ca Mùa Đông</div>
+    </div>
+    <div class="movie-item" data-title="Chuyện Tình Thành Thị">
+      <div class="movie-title">Chuyện Tình Thành Thị</div>
+    </div>
+    <div class="movie-item" data-title="Hậu Duệ Mặt Trời">
+      <div class="movie-title">Hậu Duệ Mặt Trời</div>
+    </div>
+  </div>
+
+  <script>
+    function filterMovies() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const movies = document.querySelectorAll('.movie-item');
+      movies.forEach(movie => {
+        const title = movie.getAttribute('data-title').toLowerCase();
+        if (title.includes(input)) {
+          movie.style.display = 'block';
+        } else {
+          movie.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
