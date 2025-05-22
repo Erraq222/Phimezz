@@ -51,6 +51,7 @@
       z-index: 1;
       border-radius: 8px;
       overflow: hidden;
+      min-width: 120px;
     }
 
     .dropdown a {
@@ -102,8 +103,10 @@
   </header>
 
   <div class="dropdown" id="dropdownMenu">
-    <a href="#">Thể loại</a>
-    <a href="#">Chủ đề</a>
+    <a href="romance.html">Tình cảm</a>
+    <a href="#">Hành động</a>
+    <a href="#">Hài hước</a>
+    <!-- Thêm các thể loại khác nếu muốn -->
   </div>
 
   <div class="search-box" id="searchBox">
@@ -125,7 +128,6 @@
       search.style.display = search.style.display === "block" ? "none" : "block";
     }
 
-    // Tự ẩn dropdown nếu click ra ngoài
     window.onclick = function(event) {
       if (!event.target.matches('.menu-icon')) {
         const dropdown = document.getElementById("dropdownMenu");
