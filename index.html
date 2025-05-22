@@ -16,7 +16,6 @@
       padding: 10px 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
 
     .left-section {
@@ -40,6 +39,7 @@
     .search-icon {
       font-size: 20px;
       cursor: pointer;
+      margin-left: 12px;
     }
 
     .dropdown {
@@ -51,7 +51,18 @@
       z-index: 1;
       border-radius: 8px;
       overflow: hidden;
-      min-width: 120px;
+      min-width: 200px;
+    }
+
+    .dropdown-section {
+      border-bottom: 1px solid #444;
+    }
+
+    .dropdown-section-title {
+      padding: 8px 16px;
+      background-color: #222;
+      font-weight: bold;
+      color: #ffcc00;
     }
 
     .dropdown a {
@@ -98,15 +109,33 @@
     <div class="left-section">
       <div class="menu-icon" onclick="toggleDropdown()">☰</div>
       <a class="site-title" href="index.html">Phim Online</a>
+      <div class="search-icon" onclick="toggleSearch()">🔍</div>
     </div>
-    <div class="search-icon" onclick="toggleSearch()">🔍</div>
   </header>
 
   <div class="dropdown" id="dropdownMenu">
-    <a href="romance.html">Tình cảm</a>
-    <a href="#">Hành động</a>
-    <a href="#">Hài hước</a>
-    <!-- Thêm các thể loại khác nếu muốn -->
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Thể loại</div>
+      <a href="romance.html">Tình cảm</a>
+      <a href="#">Hành động</a>
+      <a href="#">Hài hước</a>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Chủ đề</div>
+      <a href="#">Học đường</a>
+      <a href="#">Gia đình</a>
+      <a href="#">Kỳ ảo</a>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Phim Hot</div>
+      <a href="#">Top tuần</a>
+      <a href="#">Top tháng</a>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Phim Mới Cập Nhật</div>
+      <a href="#">Mới nhất</a>
+      <a href="#">Vừa cập nhật</a>
+    </div>
   </div>
 
   <div class="search-box" id="searchBox">
@@ -129,10 +158,14 @@
     }
 
     window.onclick = function(event) {
-      if (!event.target.matches('.menu-icon')) {
+      if (!event.target.closest('.menu-icon') && !event.target.closest('.search-icon')) {
         const dropdown = document.getElementById("dropdownMenu");
+        const search = document.getElementById("searchBox");
         if (dropdown && dropdown.style.display === "block") {
           dropdown.style.display = "none";
+        }
+        if (search && search.style.display === "block") {
+          search.style.display = "none";
         }
       }
     };
