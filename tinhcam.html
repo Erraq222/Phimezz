@@ -1,85 +1,93 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Phim Tình Cảm</title>
   <style>
     body {
-      background-color: #121212;
-      color: #fff;
       font-family: Arial, sans-serif;
+      background: #121212;
+      color: #eee;
       margin: 0;
       padding: 0;
     }
     header {
-      background-color: #1f1f1f;
+      background: #1f1f1f;
       padding: 20px;
       text-align: center;
-      color: #f8d12f;
-      font-size: 1.5em;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
-    .posters {
+    header a {
+      color: inherit;
+      text-decoration: none;
+    }
+    nav {
+      background: #222;
+      padding: 10px 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    nav button {
+      background: #333;
+      border: none;
+      padding: 10px 20px;
+      color: #eee;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    nav button:hover {
+      background: #ff4757;
+    }
+    .movie-list {
+      max-width: 800px;
+      margin: 20px auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
       gap: 20px;
-      padding: 20px;
     }
-    .poster {
-      background-color: #1a1a1a;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    .movie-item {
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(255,71,87,0.3);
       transition: transform 0.3s ease;
     }
-    .poster:hover {
+    .movie-item:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(255,71,87,0.7);
     }
-    .poster img {
-      width: 100%;
-      display: block;
-    }
-    .poster-title {
-      padding: 10px;
+    .movie-title {
+      font-weight: bold;
+      font-size: 1.1rem;
       text-align: center;
-      font-size: 1em;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #999;
-      background-color: #1a1a1a;
     }
   </style>
 </head>
 <body>
-  <header>Phim Thể Loại Tình Cảm</header>
-  <div class="posters">
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=Your+Name" alt="Your Name">
-      <div class="poster-title">Your Name</div>
+  <header>
+    <a href="index.html">Phim Online</a>
+  </header>
+
+  <nav>
+    <button onclick="location.href='index.html'">Trang Chủ</button>
+    <button onclick="location.href='tinhcam.html'">Tình Cảm</button>
+    <button onclick="alert('Chưa có trang này')">Hành Động</button>
+  </nav>
+
+  <div class="movie-list">
+    <div class="movie-item">
+      <div class="movie-title">Yêu Em Từ Cái Nhìn Đầu Tiên</div>
     </div>
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=Titanic" alt="Titanic">
-      <div class="poster-title">Titanic</div>
-    </div>
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=La+La+Land" alt="La La Land">
-      <div class="poster-title">La La Land</div>
-    </div>
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=The+Notebook" alt="The Notebook">
-      <div class="poster-title">The Notebook</div>
-    </div>
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=Me+Before+You" alt="Me Before You">
-      <div class="poster-title">Me Before You</div>
-    </div>
-    <div class="poster">
-      <img src="https://via.placeholder.com/180x270?text=About+Time" alt="About Time">
-      <div class="poster-title">About Time</div>
+    <div class="movie-item">
+      <div class="movie-title">Hậu Duệ Mặt Trời</div>
     </div>
   </div>
-  <footer>&copy; 2025 PHIM PLUS. All rights reserved.</footer>
 </body>
 </html>
