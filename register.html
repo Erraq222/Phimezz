@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim Online - Đăng Ký</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 120px); /* Chiều cao tối thiểu, trừ đi header/footer */
+      padding: 20px;
+    }
+
+    .auth-form {
+      background-color: #1f1f1f;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .auth-form h2 {
+      color: #ffcc00;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #bbb;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      width: calc(100% - 24px); /* Trừ padding */
+      padding: 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      background-color: #282828;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #ffcc00;
+    }
+
+    .auth-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffcc00;
+      color: #121212;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .auth-form button:hover {
+      background-color: #ffd700;
+    }
+
+    .form-links {
+      margin-top: 25px;
+      font-size: 15px;
+    }
+
+    .form-links a {
+      color: #ffcc00;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .form-links a:hover {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <div class="menu-icon" onclick="toggleDropdown()">☰</div>
+      <a class="site-title" href="index.html">Phim Online</a>
+    </div>
+    <div class="right-section">
+        <div class="search-icon" onclick="toggleSearch()">🔍</div>
+        <div class="user-icon" onclick="window.location.href='login.html'">👤</div> </div>
+  </header>
+
+  <div class="dropdown" id="dropdownMenu">
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Thể loại</div>
+      <a href="tinhcam.html">Tình cảm</a>
+      <a href="#">Hành động</a>
+      <a href="#">Hài hước</a>
+      <a href="#">Kinh dị</a>
+      <a href="#">Khoa học viễn tưởng</a>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Quốc gia</div>
+      <a href="#">Việt Nam</a>
+      <a href="#">Hàn Quốc</a>
+      <a href="#">Trung Quốc</a>
+      <a href="#">Mỹ</a>
+      <a href="#">Châu Âu</a>
+    </div>
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim..." />
+    <button>Tìm</button>
+  </div>
+
+  <main>
+    <div class="form-container">
+      <form class="auth-form">
+        <h2>Đăng Ký Tài Khoản</h2>
+        <div class="input-group">
+          <label for="username_register">Tên đăng nhập</label>
+          <input type="text" id="username_register" name="username" placeholder="Tên bạn muốn dùng" required />
+        </div>
+        <div class="input-group">
+          <label for="email_register">Email</label>
+          <input type="email" id="email_register" name="email" placeholder="Email của bạn" required />
+        </div>
+        <div class="input-group">
+          <label for="password_register">Mật khẩu</label>
+          <input type="password" id="password_register" name="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" required />
+        </div>
+        <div class="input-group">
+          <label for="confirm_password_register">Xác nhận mật khẩu</label>
+          <input type="password" id="confirm_password_register" name="confirm_password" placeholder="Nhập lại mật khẩu" required />
+        </div>
+        <button type="submit">Đăng Ký</button>
+        <div class="form-links">
+          Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Phim Online. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
