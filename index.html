@@ -1,140 +1,10 @@
-<!DOCTYPE html><html lang="vi">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Phim Online</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #121212;
-      color: white;
-      font-family: Arial, sans-serif;
-    }header {
-  background-color: #1f1f1f;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.left-section {
-  display: flex;
-  align-items: center;
-}
-
-.menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 20px;
-}
-
-.site-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
-
-.search-icon {
-  font-size: 20px;
-  cursor: pointer;
-  margin-left: 12px;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  background-color: #333;
-  top: 50px;
-  left: 20px;
-  z-index: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  min-width: 200px;
-}
-
-.dropdown-section {
-  border-bottom: 1px solid #444;
-}
-
-.dropdown-section-title {
-  padding: 8px 16px;
-  background-color: #222;
-  font-weight: bold;
-  color: #ffcc00;
-}
-
-.dropdown a {
-  color: white;
-  padding: 10px 16px;
-  display: block;
-  text-decoration: none;
-}
-
-.dropdown a:hover {
-  background-color: #555;
-}
-
-.search-box {
-  display: none;
-  padding: 10px 20px;
-  background-color: #1f1f1f;
-}
-
-.search-box input {
-  padding: 6px;
-  width: 200px;
-  border-radius: 6px;
-  border: none;
-}
-
-.search-box button {
-  padding: 6px 10px;
-  background-color: #555;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.banner {
-  width: 100%;
-  height: 400px;
-  background: url('https://via.placeholder.com/1200x400') no-repeat center center;
-  background-size: cover;
-}
-
-.section {
-  margin: 20px;
-}
-
-.section h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-.movie-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
-}
-
-.movie-item {
-  background-color: #1f1f1f;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.movie-item img {
-  width: 100%;
-  height: auto;
-}
-
-.movie-item p {
-  margin: 10px;
-}
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim Online - Trang Chủ</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -142,73 +12,103 @@
       <div class="menu-icon" onclick="toggleDropdown()">☰</div>
       <a class="site-title" href="index.html">Phim Online</a>
     </div>
-    <div class="search-icon" onclick="toggleSearch()">🔍</div>
-  </header>  <div class="dropdown" id="dropdownMenu">
+    <div class="right-section">
+        <div class="search-icon" onclick="toggleSearch()">🔍</div>
+        <div class="user-icon">👤</div> </div>
+  </header>
+
+  <div class="dropdown" id="dropdownMenu">
     <div class="dropdown-section">
       <div class="dropdown-section-title">Thể loại</div>
       <a href="tinhcam.html">Tình cảm</a>
       <a href="#">Hành động</a>
       <a href="#">Hài hước</a>
+      <a href="#">Kinh dị</a>
+      <a href="#">Khoa học viễn tưởng</a>
     </div>
     <div class="dropdown-section">
-      <div class="dropdown-section-title">Chủ đề</div>
-      <a href="#">Học đường</a>
-      <a href="#">Gia đình</a>
-      <a href="#">Kỳ ảo</a>
+      <div class="dropdown-section-title">Quốc gia</div>
+      <a href="#">Việt Nam</a>
+      <a href="#">Hàn Quốc</a>
+      <a href="#">Trung Quốc</a>
+      <a href="#">Mỹ</a>
+      <a href="#">Châu Âu</a>
     </div>
-  </div>  <div class="search-box" id="searchBox">
-    <input type="text" placeholder="Tìm kiếm phim...">
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim..." />
     <button>Tìm</button>
-  </div>  <div class="banner"></div>  <div class="section">
-    <h2>Phim Lẻ Mới</h2>
-    <div class="movie-grid">
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 1</p>
-      </div>
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 2</p>
-      </div>
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 3</p>
+  </div>
+
+  <main>
+    <div class="banner"></div>
+
+    <div class="section">
+      <h2>Phim Lẻ Mới Nhất</h2>
+      <div class="movie-grid">
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Le+1" alt="Tên phim 1">
+          <p>Tên phim lẻ 1</p>
+        </div>
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Le+2" alt="Tên phim 2">
+          <p>Tên phim lẻ 2</p>
+        </div>
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Le+3" alt="Tên phim 3">
+          <p>Tên phim lẻ 3</p>
+        </div>
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Le+4" alt="Tên phim 4">
+          <p>Tên phim lẻ 4</p>
+        </div>
+        <div class="movie-item">
+            <img src="https://via.placeholder.com/180x270?text=Phim+Le+5" alt="Tên phim 5">
+            <p>Tên phim lẻ 5</p>
+        </div>
+        <div class="movie-item">
+            <img src="https://via.placeholder.com/180x270?text=Phim+Le+6" alt="Tên phim 6">
+            <p>Tên phim lẻ 6</p>
+        </div>
       </div>
     </div>
-  </div>  <div class="section">
-    <h2>Phim Bộ Hot</h2>
-    <div class="movie-grid">
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 4</p>
-      </div>
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 5</p>
-      </div>
-      <div class="movie-item">
-        <img src="https://via.placeholder.com/150x220" alt="Phim">
-        <p>Tên phim 6</p>
+
+    <div class="section">
+      <h2>Phim Bộ Đang Hot</h2>
+      <div class="movie-grid">
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+1" alt="Tên phim 4">
+          <p>Tên phim bộ 1</p>
+        </div>
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+2" alt="Tên phim 5">
+          <p>Tên phim bộ 2</p>
+        </div>
+        <div class="movie-item">
+          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+3" alt="Tên phim 6">
+          <p>Tên phim bộ 3</p>
+        </div>
+        <div class="movie-item">
+            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+4" alt="Tên phim 7">
+            <p>Tên phim bộ 4</p>
+        </div>
+        <div class="movie-item">
+            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+5" alt="Tên phim 8">
+            <p>Tên phim bộ 5</p>
+        </div>
+        <div class="movie-item">
+            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+6" alt="Tên phim 9">
+            <p>Tên phim bộ 6</p>
+        </div>
       </div>
     </div>
-  </div>  <script>
-    function toggleDropdown() {
-      const menu = document.getElementById("dropdownMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
+  </main>
 
-    function toggleSearch() {
-      const search = document.getElementById("searchBox");
-      search.style.display = search.style.display === "block" ? "none" : "block";
-    }
+  <footer>
+    <p>&copy; 2025 Phim Online. All rights reserved.</p>
+  </footer>
 
-    window.onclick = function(event) {
-      if (!event.target.closest('.menu-icon') && !event.target.closest('.search-icon')) {
-        const dropdown = document.getElementById("dropdownMenu");
-        const search = document.getElementById("searchBox");
-        if (dropdown && dropdown.style.display === "block") dropdown.style.display = "none";
-        if (search && search.style.display === "block") search.style.display = "none";
-      }
-    };
-  </script></body>
+  <script src="script.js"></script>
+</body>
 </html>
