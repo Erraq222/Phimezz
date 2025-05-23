@@ -51,20 +51,19 @@ header {
     gap: 15px;
 }
 
-.menu-icon,
-.search-icon,
-.user-icon {
-  font-size: 24px;
+/* --- Thay đổi ở đây: Style cho SVG icons --- */
+.header-icon {
+  width: 24px; /* Kích thước icon */
+  height: 24px;
   cursor: pointer;
-  color: white;
-  transition: color 0.3s ease;
+  fill: white; /* Màu icon */
+  transition: fill 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
 }
 
-.menu-icon:hover,
-.search-icon:hover,
-.user-icon:hover {
-  color: #ffcc00;
+.header-icon:hover {
+  fill: #ffcc00; /* Màu khi hover */
 }
+/* --- Kết thúc thay đổi --- */
 
 /* Dropdown Menu Styles */
 .dropdown {
@@ -88,7 +87,6 @@ header {
   border-bottom: none;
 }
 
-/* Thay đổi ở đây: Thêm style cho tiêu đề có dấu cộng */
 .dropdown-section-title {
   padding: 12px 18px;
   background-color: #333333;
@@ -96,7 +94,7 @@ header {
   color: #ffcc00;
   font-size: 15px;
   text-transform: uppercase;
-  cursor: pointer; /* Cho phép click vào để mở/đóng */
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -384,8 +382,9 @@ footer {
     .site-title {
         font-size: 22px;
     }
-    .menu-icon, .search-icon, .user-icon {
-        font-size: 20px;
+    .header-icon {
+        width: 20px;
+        height: 20px;
     }
     .dropdown, .search-box {
         top: 55px;
@@ -425,8 +424,9 @@ footer {
         font-size: 20px;
         margin-left: 10px;
     }
-    .menu-icon, .search-icon, .user-icon {
-        font-size: 18px;
+    .header-icon {
+        width: 18px;
+        height: 18px;
     }
     h1 {
         font-size: 24px;
