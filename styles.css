@@ -1,23 +1,29 @@
 /* General Body Styles */
 body {
   margin: 0;
-  background-color: #121212; /* Nền tối */
-  color: white; /* Chữ trắng */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: white;
+  font-family: 'Montserrat', sans-serif; /* Font chữ hiện đại */
   line-height: 1.6;
+  overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Header Styles */
 header {
-  background-color: #1f1f1f; /* Màu nền header */
+  background: linear-gradient(135deg, #1f1f1f 0%, #333333 100%); /* Gradient header */
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Đẩy các phần tử ra hai bên */
-  position: sticky; /* Giữ header cố định khi cuộn */
+  justify-content: space-between;
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Đảm bảo header nằm trên cùng */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Tạo bóng đổ nhẹ */
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .left-section {
@@ -28,20 +34,21 @@ header {
 .site-title {
   font-size: 26px;
   font-weight: bold;
-  color: #ffcc00; /* Màu vàng nổi bật */
+  color: #ffcc00;
   text-decoration: none;
-  margin-left: 15px; /* Khoảng cách với menu icon */
+  margin-left: 15px;
   letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 .site-title:hover {
-    color: #ffd700; /* Màu vàng đậm hơn khi hover */
+    color: #ffd700;
 }
 
 .right-section {
     display: flex;
     align-items: center;
-    gap: 15px; /* Khoảng cách giữa các icon */
+    gap: 15px;
 }
 
 .menu-icon,
@@ -50,40 +57,40 @@ header {
   font-size: 24px;
   cursor: pointer;
   color: white;
-  transition: color 0.3s ease; /* Hiệu ứng chuyển màu */
+  transition: color 0.3s ease;
 }
 
 .menu-icon:hover,
 .search-icon:hover,
 .user-icon:hover {
-  color: #ffcc00; /* Đổi màu khi hover */
+  color: #ffcc00;
 }
 
 /* Dropdown Menu Styles */
 .dropdown {
-  display: none; /* Mặc định ẩn */
+  display: none;
   position: absolute;
-  background-color: #282828; /* Nền tối hơn */
-  top: 60px; /* Dưới header một chút */
+  background-color: #282828;
+  top: 60px;
   left: 20px;
   z-index: 900;
   border-radius: 8px;
   overflow: hidden;
-  min-width: 250px; /* Chiều rộng tối thiểu */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Bóng đổ mạnh hơn */
+  min-width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-section {
-  border-bottom: 1px solid #3a3a3a; /* Đường kẻ phân cách */
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .dropdown-section:last-child {
-  border-bottom: none; /* Bỏ đường kẻ cuối cùng */
+  border-bottom: none;
 }
 
 .dropdown-section-title {
   padding: 12px 18px;
-  background-color: #333333; /* Màu nền tiêu đề mục */
+  background-color: #333333;
   font-weight: bold;
   color: #ffcc00;
   font-size: 15px;
@@ -99,13 +106,13 @@ header {
 }
 
 .dropdown a:hover {
-  background-color: #4a4a4a; /* Màu nền khi hover */
+  background-color: #4a4a4a;
   color: #ffcc00;
 }
 
 /* Search Box Styles */
 .search-box {
-  display: none; /* Mặc định ẩn */
+  display: none;
   position: absolute;
   right: 20px;
   top: 60px;
@@ -121,13 +128,13 @@ header {
 
 .search-box input {
   padding: 8px 12px;
-  width: 250px; /* Chiều rộng input */
+  width: 250px;
   border-radius: 6px;
   border: 1px solid #555;
-  background-color: #3a3a3a; /* Nền input */
+  background-color: #3a3a3a;
   color: white;
   font-size: 15px;
-  outline: none; /* Bỏ viền focus mặc định */
+  outline: none;
 }
 
 .search-box input::placeholder {
@@ -136,8 +143,8 @@ header {
 
 .search-box button {
   padding: 8px 15px;
-  background-color: #555;
-  color: white;
+  background-color: #ffcc00; /* Nút tìm kiếm nổi bật */
+  color: #121212;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -146,8 +153,7 @@ header {
 }
 
 .search-box button:hover {
-  background-color: #ffcc00; /* Nút tìm kiếm nổi bật hơn */
-  color: #121212;
+  background-color: #ffd700;
 }
 
 /* Main Content Styles */
@@ -155,17 +161,50 @@ main {
     padding: 20px;
 }
 
+/* Banner Styles */
+.banner {
+  width: 100%;
+  height: 400px;
+  background: url('https://i.imgur.com/your-banner-image.jpg') no-repeat center center; /* Thay URL ảnh banner của em vào đây */
+  background-size: cover;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out; /* Animation xuất hiện */
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 h1 {
   font-size: 32px;
   margin-bottom: 25px;
   color: #ffcc00;
   text-align: center;
+  animation: slideInDown 1s ease-in-out; /* Animation cho tiêu đề */
+}
+
+/* Slide In Down Animation */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Filter Section Styles */
 .filters-container {
     margin-bottom: 25px;
-    text-align: center; /* Để nút bộ lọc ở giữa */
+    text-align: center;
 }
 
 .filter-toggle {
@@ -178,7 +217,7 @@ h1 {
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  margin-bottom: 15px; /* Khoảng cách với phần filters */
+  margin-bottom: 15px;
 }
 
 .filter-toggle:hover {
@@ -187,16 +226,17 @@ h1 {
 }
 
 .filters {
-  display: none; /* Mặc định ẩn */
+  display: none;
   background-color: #1f1f1f;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  text-align: left; /* Đưa các select về trái */
-  display: flex; /* Dùng flexbox để sắp xếp các select */
-  flex-wrap: wrap; /* Cho phép xuống dòng khi không đủ chỗ */
-  gap: 15px; /* Khoảng cách giữa các phần tử filter */
-  justify-content: center; /* Căn giữa các bộ lọc */
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out; /* Animation xuất hiện */
 }
 
 .filters select {
@@ -208,24 +248,29 @@ h1 {
   font-size: 15px;
   cursor: pointer;
   outline: none;
-  min-width: 150px; /* Chiều rộng tối thiểu cho select */
-  -webkit-appearance: none; /* Bỏ style mặc định của select trên Webkit */
-  -moz-appearance: none; /* Bỏ style mặc định của select trên Firefox */
-  appearance: none; /* Bỏ style mặc định của select */
-  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Icon mũi tên xuống */
+  min-width: 150px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-size: 18px;
+  transition: border-color 0.3s ease; /* Hiệu ứng border */
+}
+
+.filters select:focus {
+    border-color: #ffcc00; /* Border khi focus */
 }
 
 .filters select option {
-  background-color: #333; /* Màu nền option */
+  background-color: #333;
   color: white;
 }
 
 .filters button.filter-submit {
   padding: 10px 20px;
-  background-color: #ffcc00; /* Nút lọc nổi bật */
+  background-color: #ffcc00;
   border: none;
   border-radius: 6px;
   color: #121212;
@@ -233,8 +278,8 @@ h1 {
   font-weight: bold;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  flex-grow: 1; /* Nút sẽ giãn nở để chiếm hết không gian còn lại */
-  max-width: 200px; /* Giới hạn chiều rộng của nút */
+  flex-grow: 1;
+  max-width: 200px;
 }
 
 .filters button.filter-submit:hover {
@@ -245,8 +290,8 @@ h1 {
 /* Movie Grid Styles */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 180px là chiều rộng của poster */
-  gap: 20px; /* Khoảng cách giữa các phim */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
   padding: 20px;
 }
 
@@ -256,42 +301,60 @@ h1 {
   overflow: hidden;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .movie-item:hover {
-  transform: translateY(-5px); /* Nhấc nhẹ lên khi hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Bóng đổ đậm hơn */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .movie-item img {
   width: 100%;
-  height: 270px; /* Chiều cao cố định cho poster */
-  object-fit: cover; /* Đảm bảo ảnh không bị méo */
-  display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+  height: 270px;
+  object-fit: cover;
+  display: block;
   border-bottom: 1px solid #333;
+  transition: transform 0.3s ease; /* Hiệu ứng zoom ảnh */
+}
+
+.movie-item:hover img {
+    transform: scale(1.1); /* Zoom ảnh khi hover */
 }
 
 .movie-item p {
   margin: 15px 10px;
   font-size: 16px;
   font-weight: bold;
-  color: #ffcc00; /* Tên phim nổi bật */
-  white-space: nowrap; /* Ngăn không cho tên phim xuống dòng */
-  overflow: hidden; /* Ẩn phần bị tràn */
-  text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu tên quá dài */
+  color: #ffcc00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Footer Styles */
 footer {
-  background-color: #1f1f1f;
+  background: linear-gradient(135deg, #333333 0%, #1f1f1f 100%); /* Gradient footer */
   color: #bbb;
   text-align: center;
   padding: 20px;
   margin-top: 30px;
   font-size: 14px;
   border-top: 1px solid #333;
+  animation: slideInUp 1s ease-in-out; /* Animation cho footer */
+}
+
+/* Slide In Up Animation */
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Responsive adjustments */
@@ -303,7 +366,7 @@ footer {
         font-size: 20px;
     }
     .dropdown, .search-box {
-        top: 55px; /* Điều chỉnh vị trí cho màn hình nhỏ hơn */
+        top: 55px;
         left: 10px;
         right: 10px;
         width: auto;
@@ -316,19 +379,19 @@ footer {
         font-size: 26px;
     }
     .filters {
-        flex-direction: column; /* Xếp các bộ lọc theo cột trên màn hình nhỏ */
-        align-items: stretch; /* Kéo dài các bộ lọc ra hết chiều rộng */
+        flex-direction: column;
+        align-items: stretch;
     }
     .filters select, .filters button.filter-submit {
-        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        width: 100%;
         max-width: unset;
     }
     .movie-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Giảm kích thước poster */
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 15px;
     }
     .movie-item img {
-        height: 210px; /* Chiều cao poster nhỏ hơn */
+        height: 210px;
     }
 }
 
@@ -359,4 +422,5 @@ footer {
         padding: 15px;
         gap: 10px;
     }
-}
+  }
+  
