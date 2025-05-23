@@ -153,4 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// *** NEW: Function để chuyển đổi tab bảng xếp hạng ***
+function showRanking(period) {
+    // Ẩn tất cả các nội dung bảng xếp hạng
+    document.querySelectorAll('.ranking-content').forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Bỏ trạng thái active của tất cả các nút tab
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Hiển thị nội dung tương ứng với tab được chọn
+    document.getElementById(`${period}Ranking`).classList.add('active');
+
+    // Thêm trạng thái active cho nút tab được chọn
+    event.currentTarget.classList.add('active');
+                              }
         
