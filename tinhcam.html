@@ -2,245 +2,131 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phim Online - Tình Cảm</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #121212;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-      margin-right: 20px;
-    }
-    .site-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      flex-grow: 1;
-    }
-    .search-icon {
-      font-size: 20px;
-      cursor: pointer;
-      margin-left: 12px;
-    }
-    .search-box {
-      display: none;
-      position: absolute;
-      right: 20px;
-      top: 50px;
-      background-color: #1f1f1f;
-      padding: 8px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 10;
-    }
-    .search-box input {
-      padding: 6px;
-      width: 200px;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: white;
-    }
-    .search-box input::placeholder {
-      color: #bbb;
-    }
-    .search-box button {
-      padding: 6px 10px;
-      background-color: #555;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      background-color: #333;
-      top: 50px;
-      left: 20px;
-      z-index: 1;
-      border-radius: 8px;
-      overflow: hidden;
-      min-width: 200px;
-    }
-    .dropdown a {
-      color: white;
-      padding: 10px 16px;
-      display: block;
-      text-decoration: none;
-    }
-    .dropdown a:hover {
-      background-color: #555;
-    }
-    .filter-toggle {
-      cursor: pointer;
-      font-size: 16px;
-      background-color: #333;
-      color: white;
-      padding: 6px 10px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      margin-left: 20px;
-    }
-    .filters {
-      display: none;
-      margin: 20px;
-      background-color: #1f1f1f;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .filters select {
-      margin: 8px;
-      padding: 6px;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: white;
-    }
-    .filters button.filter-submit {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #555;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    h1 {
-      margin: 20px;
-      font-size: 28px;
-    }
-    .movie-list {
-      margin: 20px;
-    }
-    .movie-item {
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <div class="menu-icon" onclick="toggleDropdown()">☰</div>
-    <a class="site-title" href="index.html">Phim Online</a>
-    <div class="search-icon" onclick="toggleSearch()">🔍</div>
-    <div class="search-box" id="searchBox">
-      <input type="text" placeholder="Tìm kiếm phim..." />
-      <button>Tìm</button>
+    <div class="left-section">
+      <div class="menu-icon" onclick="toggleDropdown()">☰</div>
+      <a class="site-title" href="index.html">Phim Online</a>
     </div>
+    <div class="right-section">
+        <div class="search-icon" onclick="toggleSearch()">🔍</div>
+        <div class="user-icon">👤</div> </div>
   </header>
 
   <div class="dropdown" id="dropdownMenu">
-    <a href="#">Thể loại</a>
-    <a href="romance.html" style="padding-left: 30px;">Tình cảm</a>
-    <a href="#">Chủ đề</a>
-  </div>
-
-  <h1>Phim Tình Cảm</h1>
-
-  <div style="margin: 20px;">
-    <button class="filter-toggle" onclick="toggleFilters()">Bộ lọc</button>
-    <div class="filters" id="filterSection">
-      <select>
-        <option>Quốc gia</option>
-        <option>Tất cả</option>
-        <option>Việt Nam</option>
-        <option>Hàn Quốc</option>
-        <option>Trung Quốc</option>
-        <option>Anh</option>
-        <option>Mỹ</option>
-        <option>Pháp</option>
-      </select>
-      <select>
-        <option>Loại phim</option>
-        <option>Tất cả</option>
-        <option>Phim lẻ</option>
-        <option>Phim bộ</option>
-      </select>
-      <select>
-        <option>Thể loại</option>
-        <option>Lãng mạn</option>
-        <option>Hành động</option>
-        <option>Kinh dị</option>
-      </select>
-      <select>
-        <option>Năm sản xuất</option>
-        <option>2025</option>
-        <option>2024</option>
-        <option>2023</option>
-        <option>2022</option>
-        <option>2021</option>
-        <option>2020</option>
-        <option>2019</option>
-        <option>2018</option>
-        <option>2017</option>
-        <option>2016</option>
-        <option>2015</option>
-      </select>
-      <select>
-        <option>Sắp xếp</option>
-        <option>Mới nhất</option>
-        <option>Lượt xem</option>
-      </select>
-      <!-- Nút Lọc phim mới -->
-      <button class="filter-submit" onclick="applyFilter()">Lọc phim</button>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Thể loại</div>
+      <a href="tinhcam.html">Tình cảm</a>
+      <a href="#">Hành động</a>
+      <a href="#">Hài hước</a>
+      <a href="#">Kinh dị</a>
+      <a href="#">Khoa học viễn tưởng</a>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title">Quốc gia</div>
+      <a href="#">Việt Nam</a>
+      <a href="#">Hàn Quốc</a>
+      <a href="#">Trung Quốc</a>
+      <a href="#">Mỹ</a>
+      <a href="#">Châu Âu</a>
     </div>
   </div>
 
-  <div class="movie-list">
-    <div class="movie-item">Phim 1: Anh yêu em</div>
-    <div class="movie-item">Phim 2: Mùa hạ năm ấy</div>
-    <div class="movie-item">Phim 3: Hẹn em ngày nắng</div>
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim..." />
+    <button>Tìm</button>
   </div>
 
-  <script>
-    function toggleDropdown() {
-      const menu = document.getElementById("dropdownMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-    function toggleFilters() {
-      const filters = document.getElementById("filterSection");
-      filters.style.display = filters.style.display === "block" ? "none" : "block";
-    }
-    function toggleSearch() {
-      const search = document.getElementById("searchBox");
-      search.style.display = search.style.display === "flex" ? "none" : "flex";
-    }
-    function applyFilter() {
-      alert("Đã áp dụng bộ lọc phim! (Tính năng demo)");
-      // Đây anh có thể thêm xử lý lọc phim thực tế cho em sau
-    }
-    window.onclick = function(event) {
-      if (
-        !event.target.closest(".menu-icon") &&
-        !event.target.closest(".search-icon") &&
-        !event.target.closest("#searchBox")
-      ) {
-        const dropdown = document.getElementById("dropdownMenu");
-        const search = document.getElementById("searchBox");
-        if (dropdown && dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-        }
-        if (search && search.style.display === "flex") {
-          search.style.display = "none";
-        }
-      }
-    };
-  </script>
+  <main>
+    <h1>Phim Tình Cảm</h1>
+
+    <div class="filters-container">
+      <button class="filter-toggle" onclick="toggleFilters()">Bộ lọc nâng cao</button>
+      <div class="filters" id="filterSection">
+        <select>
+          <option value="">Quốc gia</option>
+          <option value="all">Tất cả</option>
+          <option value="vn">Việt Nam</option>
+          <option value="kr">Hàn Quốc</option>
+          <option value="cn">Trung Quốc</option>
+          <option value="us">Mỹ</option>
+          <option value="fr">Pháp</option>
+          <option value="uk">Anh</option>
+        </select>
+        <select>
+          <option value="">Loại phim</option>
+          <option value="all">Tất cả</option>
+          <option value="single">Phim lẻ</option>
+          <option value="series">Phim bộ</option>
+        </select>
+        <select>
+          <option value="">Thể loại</option>
+          <option value="romantic">Lãng mạn</option>
+          <option value="action">Hành động</option>
+          <option value="horror">Kinh dị</option>
+          <option value="comedy">Hài hước</option>
+        </select>
+        <select>
+          <option value="">Năm sản xuất</option>
+          <option value="all">Tất cả</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+        </select>
+        <select>
+          <option value="">Sắp xếp theo</option>
+          <option value="newest">Mới nhất</option>
+          <option value="views">Lượt xem</option>
+          <option value="rating">Điểm đánh giá</option>
+        </select>
+        <button class="filter-submit" onclick="applyFilter()">Lọc phim</button>
+      </div>
+    </div>
+
+    <div class="movie-grid">
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+1" alt="Phim 1: Anh yêu em">
+        <p>Anh yêu em</p>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+2" alt="Phim 2: Mùa hạ năm ấy">
+        <p>Mùa hạ năm ấy</p>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+3" alt="Phim 3: Hẹn em ngày nắng">
+        <p>Hẹn em ngày nắng</p>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+4" alt="Phim 4: Tình đầu">
+        <p>Tình đầu</p>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+5" alt="Phim 5: Giấc mơ đôi ta">
+        <p>Giấc mơ đôi ta</p>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Phim+6" alt="Phim 6: Chờ đợi một tình yêu">
+        <p>Chờ đợi một tình yêu</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Phim Online. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
