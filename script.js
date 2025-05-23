@@ -1,4 +1,4 @@
-// Function để bật/tắt dropdown menu
+// Function để bật/tắt dropdown menu chính
 function toggleDropdown() {
     const dropdownMenu = document.getElementById("dropdownMenu");
     // Nếu menu đang hiển thị (block), thì ẩn đi (none), ngược lại thì hiển thị (block)
@@ -24,7 +24,7 @@ function toggleSearch() {
     }
 }
 
-// Function để bật/tắt bộ lọc nâng cao
+// Function để bật/tắt bộ lọc nâng cao (cho trang tinhcam.html)
 function toggleFilters() {
     const filterSection = document.getElementById("filterSection");
     // Nếu bộ lọc đang hiển thị (flex), thì ẩn đi (none), ngược lại thì hiển thị (flex)
@@ -48,9 +48,34 @@ function applyFilter() {
     filterMessage += `Sắp xếp: ${sort || 'Mặc định'}\n`;
 
     alert(filterMessage + "\n(Tính năng demo, cần thêm code backend để lọc thực tế)");
-    // Ở đây, sau này mình sẽ gửi các giá trị này đến server để lọc phim
-    // Ví dụ: fetchData('/api/movies?country=' + country + '&genre=' + genre);
 }
+
+// *** Thêm function mới để bật/tắt các mục trong dropdown menu ***
+function toggleDropdownSection(element) {
+    const sectionContent = element.nextElementSibling; // Lấy phần tử nội dung ngay sau tiêu đề
+    const toggleIcon = element.querySelector('.toggle-icon'); // Lấy icon dấu cộng
+
+    if (sectionContent.classList.contains('show')) {
+        sectionContent.classList.remove('show');
+        toggleIcon.textContent = '+'; // Đổi lại thành dấu cộng
+        element.classList.remove('active');
+    } else {
+        // Đóng tất cả các section khác trước khi mở section hiện tại
+        const allContents = document.querySelectorAll('.dropdown-section-content');
+        allContents.forEach(content => {
+            if (content !== sectionContent && content.classList.contains('show')) {
+                content.classList.remove('show');
+                content.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                content.previousElementSibling.classList.remove('active');
+            }
+        });
+
+        sectionContent.classList.add('show');
+        toggleIcon.textContent = 'x'; // Đổi thành dấu X khi mở
+        element.classList.add('active');
+    }
+}
+
 
 // Ẩn dropdown và search box khi click ra ngoài
 window.onclick = function(event) {
@@ -64,6 +89,13 @@ window.onclick = function(event) {
         const search = document.getElementById("searchBox");
         if (dropdown && dropdown.style.display === "block") {
             dropdown.style.display = "none";
+            // Đóng tất cả các mục con khi đóng menu chính
+            const allContents = document.querySelectorAll('.dropdown-section-content');
+            allContents.forEach(content => {
+                content.classList.remove('show');
+                content.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                content.previousElementSibling.classList.remove('active');
+            });
         }
         if (search && search.style.display === "flex") {
             search.style.display = "none";
@@ -80,4 +112,3 @@ window.onclick = function(event) {
         }
     }
 };
-
