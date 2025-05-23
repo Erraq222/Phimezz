@@ -21,6 +21,13 @@ function toggleSearch() {
     const dropdownMenu = document.getElementById("dropdownMenu");
     if (dropdownMenu.style.display === "block") {
         dropdownMenu.style.display = "none";
+        // Đóng tất cả các mục con khi đóng menu chính
+        const allContents = document.querySelectorAll('.dropdown-section-content');
+        allContents.forEach(content => {
+            content.classList.remove('show');
+            content.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+            content.previousElementSibling.classList.remove('active');
+        });
     }
 }
 
@@ -50,7 +57,7 @@ function applyFilter() {
     alert(filterMessage + "\n(Tính năng demo, cần thêm code backend để lọc thực tế)");
 }
 
-// *** Thêm function mới để bật/tắt các mục trong dropdown menu ***
+// Function để bật/tắt các mục trong dropdown menu
 function toggleDropdownSection(element) {
     const sectionContent = element.nextElementSibling; // Lấy phần tử nội dung ngay sau tiêu đề
     const toggleIcon = element.querySelector('.toggle-icon'); // Lấy icon dấu cộng
@@ -79,6 +86,7 @@ function toggleDropdownSection(element) {
 
 // Ẩn dropdown và search box khi click ra ngoài
 window.onclick = function(event) {
+    // Kiểm tra nếu click không phải vào menu icon, search icon, dropdown hoặc search box
     if (
         !event.target.closest(".menu-icon") &&
         !event.target.closest(".search-icon") &&
@@ -112,3 +120,37 @@ window.onclick = function(event) {
         }
     }
 };
+
+// *** Thêm sự kiện click cho site-title để ẩn menu và search box ***
+document.addEventListener('DOMContentLoaded', () => {
+    const siteTitle = document.querySelector('.site-title');
+    if (siteTitle) {
+        siteTitle.addEventListener('click', (event) => {
+            // Ngăn chặn hành vi mặc định của link để JavaScript xử lý
+            event.preventDefault();
+
+            // Ẩn dropdown menu nếu đang mở
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+                // Đóng tất cả các mục con khi đóng menu chính
+                const allContents = document.querySelectorAll('.dropdown-section-content');
+                allContents.forEach(content => {
+                    content.classList.remove('show');
+                    content.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                    content.previousElementSibling.classList.remove('active');
+                });
+            }
+
+            // Ẩn thanh tìm kiếm nếu đang mở
+            const search = document.getElementById("searchBox");
+            if (search && search.style.display === "flex") {
+                search.style.display = "none";
+            }
+
+            // Chuyển về trang chủ sau khi ẩn các thành phần
+            window.location.href = 'index.html';
+        });
+    }
+});
+        
