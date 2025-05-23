@@ -14,25 +14,34 @@
     </div>
     <div class="right-section">
         <div class="search-icon" onclick="toggleSearch()">🔍</div>
-        <div class="user-icon">👤</div> </div>
+        <div class="user-icon" onclick="window.location.href='login.html'">👤</div>
+    </div>
   </header>
 
   <div class="dropdown" id="dropdownMenu">
     <div class="dropdown-section">
-      <div class="dropdown-section-title">Thể loại</div>
-      <a href="tinhcam.html">Tình cảm</a>
-      <a href="#">Hành động</a>
-      <a href="#">Hài hước</a>
-      <a href="#">Kinh dị</a>
-      <a href="#">Khoa học viễn tưởng</a>
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Thể loại <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="tinhcam.html">Tình cảm</a>
+        <a href="#">Hành động</a>
+        <a href="#">Hài hước</a>
+        <a href="#">Kinh dị</a>
+        <a href="#">Khoa học viễn tưởng</a>
+      </div>
     </div>
     <div class="dropdown-section">
-      <div class="dropdown-section-title">Quốc gia</div>
-      <a href="#">Việt Nam</a>
-      <a href="#">Hàn Quốc</a>
-      <a href="#">Trung Quốc</a>
-      <a href="#">Mỹ</a>
-      <a href="#">Châu Âu</a>
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Quốc gia <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="#">Việt Nam</a>
+        <a href="#">Hàn Quốc</a>
+        <a href="#">Trung Quốc</a>
+        <a href="#">Mỹ</a>
+        <a href="#">Châu Âu</a>
+      </div>
     </div>
   </div>
 
