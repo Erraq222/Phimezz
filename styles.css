@@ -88,6 +88,7 @@ header {
   border-bottom: none;
 }
 
+/* Thay đổi ở đây: Thêm style cho tiêu đề có dấu cộng */
 .dropdown-section-title {
   padding: 12px 18px;
   background-color: #333333;
@@ -95,6 +96,27 @@ header {
   color: #ffcc00;
   font-size: 15px;
   text-transform: uppercase;
+  cursor: pointer; /* Cho phép click vào để mở/đóng */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-section-title .toggle-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-section-title.active .toggle-icon {
+    transform: rotate(45deg); /* Xoay dấu cộng thành dấu X khi mở */
+}
+
+.dropdown-section-content {
+    display: none; /* Mặc định ẩn nội dung */
+}
+
+.dropdown-section-content.show {
+    display: block; /* Hiển thị nội dung khi có class 'show' */
 }
 
 .dropdown a {
@@ -143,7 +165,7 @@ header {
 
 .search-box button {
   padding: 8px 15px;
-  background-color: #ffcc00; /* Nút tìm kiếm nổi bật */
+  background-color: #ffcc00;
   color: #121212;
   border: none;
   border-radius: 6px;
@@ -165,10 +187,10 @@ main {
 .banner {
   width: 100%;
   height: 400px;
-  background: url('https://i.imgur.com/your-banner-image.jpg') no-repeat center center; /* Thay URL ảnh banner của em vào đây */
+  background: url('https://via.placeholder.com/1200x400/333333/ffcc00?text=Banner+Phim+Online') no-repeat center center; /* Thay URL ảnh banner của em vào đây */
   background-size: cover;
   margin-bottom: 20px;
-  animation: fadeIn 1s ease-in-out; /* Animation xuất hiện */
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Animation */
@@ -186,7 +208,7 @@ h1 {
   margin-bottom: 25px;
   color: #ffcc00;
   text-align: center;
-  animation: slideInDown 1s ease-in-out; /* Animation cho tiêu đề */
+  animation: slideInDown 1s ease-in-out;
 }
 
 /* Slide In Down Animation */
@@ -236,7 +258,7 @@ h1 {
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-  animation: fadeIn 1s ease-in-out; /* Animation xuất hiện */
+  animation: fadeIn 1s ease-in-out;
 }
 
 .filters select {
@@ -256,11 +278,11 @@ h1 {
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-size: 18px;
-  transition: border-color 0.3s ease; /* Hiệu ứng border */
+  transition: border-color 0.3s ease;
 }
 
 .filters select:focus {
-    border-color: #ffcc00; /* Border khi focus */
+    border-color: #ffcc00;
 }
 
 .filters select option {
@@ -316,11 +338,11 @@ h1 {
   object-fit: cover;
   display: block;
   border-bottom: 1px solid #333;
-  transition: transform 0.3s ease; /* Hiệu ứng zoom ảnh */
+  transition: transform 0.3s ease;
 }
 
 .movie-item:hover img {
-    transform: scale(1.1); /* Zoom ảnh khi hover */
+    transform: scale(1.1);
 }
 
 .movie-item p {
@@ -335,14 +357,14 @@ h1 {
 
 /* Footer Styles */
 footer {
-  background: linear-gradient(135deg, #333333 0%, #1f1f1f 100%); /* Gradient footer */
+  background: linear-gradient(135deg, #333333 0%, #1f1f1f 100%);
   color: #bbb;
   text-align: center;
   padding: 20px;
   margin-top: 30px;
   font-size: 14px;
   border-top: 1px solid #333;
-  animation: slideInUp 1s ease-in-out; /* Animation cho footer */
+  animation: slideInUp 1s ease-in-out;
 }
 
 /* Slide In Up Animation */
