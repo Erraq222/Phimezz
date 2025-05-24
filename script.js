@@ -171,5 +171,119 @@ function showRanking(period) {
 
     // Thêm trạng thái active cho nút tab được chọn
     event.currentTarget.classList.add('active');
-                              }
-        
+}
+
+// NEW: Carousel functionality for Banner
+let slideIndex = 0;
+let carouselInterval;
+
+function showSlides() {
+    const slides = document.querySelectorAll('.banner-item');
+    const dots = document.querySelectorAll('.dot');
+
+    if (!slides.length || !dots.length) return; // Đảm bảo các phần tử tồn tại
+
+    // Ẩn tất cả các slide
+    slides.forEach(slide => slide.classList.remove('active'));
+    // Bỏ trạng thái active của tất cả các dot
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Reset slideIndex nếu vượt quá giới hạn
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+    }
+
+    // Hiển thị slide hiện tại và dot tương ứng
+    slides[slideIndex].classList.add('active');
+    dots[slideIndex].classList.add('active');
+
+    // Cập nhật vị trí của carousel-inner để tạo hiệu ứng trượt
+    const carouselInner = document.getElementById('bannerCarouselInner');
+    if (carouselInner) {
+        carouselInner.style.transform = `translateX(-${slideIndex * 100}%)`;
+    }
+}
+
+function moveCarousel(n) {
+    slideIndex += n;
+    showSlides();
+    resetInterval();
+}
+
+function currentSlide(n) {
+    slideIndex = n;
+    showSlides();
+    resetInterval();
+}
+
+function startCarousel() {
+    carouselInterval = setInterval(() => {
+        slideIndex++;
+        showSlides();
+    }, 5000); // Tự động chuyển slide mỗi 5 giây
+}
+
+function resetInterval() {
+    clearInterval(carouselInterval);
+    startCarousel();
+}
+
+// Bắt đầu carousel khi DOM đã tải xong
+document.addEventListener('DOMContentLoaded', () => {
+    showSlides();
+    startCarousel();
+
+    // Thêm sự kiện cho nút tìm kiếm để chuyển hướng sang trang search_results.html
+    const searchButton = document.querySelector('#searchBox button');
+    const searchInput = document.querySelector('#searchBox input[type="text"]');
+
+    if (searchButton && searchInput) {
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value;
+            if (query) {
+                window.location.href = `search_results.html?q=${encodeURIComponent(query)}`;
+            } else {
+                alert('Vui lòng nhập từ khóa tìm kiếm.');
+            }
+        });
+
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                searchButton.click(); // Kích hoạt nút tìm kiếm khi nhấn Enter
+            }
+        });
+    }
+
+    // Thêm sự kiện click cho các nút "Xem ngay" trong banner
+    const watchNowButtons = document.querySelectorAll('.watch-now-button');
+    watchNowButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Chức năng "Xem ngay" chưa được triển khai. Vui lòng thử lại sau!');
+        });
+    });
+
+    // Thêm sự kiện click cho các nút "Xem chi tiết" trong movie-item overlay
+    const viewDetailsButtons = document.querySelectorAll('.view-details-button');
+    viewDetailsButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Ngăn chặn sự kiện click lan ra movie-item cha
+            event.stopPropagation();
+            alert('Chức năng "Xem chi tiết" chưa được triển khai. Vui lòng thử lại sau!');
+        });
+    });
+
+    // Thêm sự kiện click cho toàn bộ movie-item (nếu không phải là nút view-details-button)
+    const movieItems = document.querySelectorAll('.movie-item');
+    movieItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            // Nếu click không phải vào nút view-details-button, thì xử lý tổng quát
+            if (!event.target.classList.contains('view-details-button')) {
+                 alert('Chức năng click vào phim để xem chi tiết chưa được triển khai.');
+            }
+        });
+    });
+});
+    
