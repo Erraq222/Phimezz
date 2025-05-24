@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim Online - Kết Quả Tìm Kiếm</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Specific styles for search results page */
+    .search-results-container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .search-results-container h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffcc00;
+      font-size: 32px;
+    }
+
+    .search-results-container p.no-results {
+      text-align: center;
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <div class="menu-icon" onclick="toggleDropdown()">
+        <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </div>
+      <a class="site-title" href="index.html">Phim Online</a>
+    </div>
+    <div class="right-section">
+        <div class="search-icon" onclick="toggleSearch()">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </div>
+        <div class="user-icon" onclick="window.location.href='login.html'">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+    </div>
+  </header>
+
+  <div class="dropdown" id="dropdownMenu">
+    <div class="dropdown-section">
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Thể loại <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="tinhcam.html">Tình cảm</a>
+        <a href="#">Hành động</a>
+        <a href="#">Hài hước</a>
+        <a href="#">Kinh dị</a>
+        <a href="#">Khoa học viễn tưởng</a>
+      </div>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Quốc gia <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="#">Việt Nam</a>
+        <a href="#">Hàn Quốc</a>
+        <a href="#">Trung Quốc</a>
+        <a href="#">Mỹ</a>
+        <a href="#">Châu Âu</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim..." />
+    <button>Tìm</button>
+  </div>
+
+  <main>
+    <div class="search-results-container">
+      <h1 id="searchQueryTitle">Kết quả tìm kiếm cho: ""</h1>
+      <div class="movie-grid" id="searchResultsGrid">
+        </div>
+      <p class="no-results" id="noResultsMessage" style="display: none;">Không tìm thấy kết quả nào phù hợp.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Phim Online. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      const searchQueryTitle = document.getElementById('searchQueryTitle');
+      const searchResultsGrid = document.getElementById('searchResultsGrid');
+      const noResultsMessage = document.getElementById('noResultsMessage');
+
+      if (query) {
+        searchQueryTitle.textContent = `Kết quả tìm kiếm cho: "${decodeURIComponent(query)}"`;
+        // Simulate fetching search results (replace with actual API call later)
+        const dummyResults = [
+          { title: "Phim Hot 1", img: "https://via.placeholder.com/180x270?text=Hot+1", genre: "Hành động, Phiêu lưu", views: "2.5M" },
+          { title: "Phim Mới 2", img: "https://via.placeholder.com/180x270?text=Moi+2", genre: "Tình cảm, Hài hước", views: "1.8M" },
+          { title: "Phim Hay 3", img: "https://via.placeholder.com/180x270?text=Hay+3", genre: "Kinh dị, Giật gân", views: "900K" },
+          { title: "Phim Đỉnh 4", img: "https://via.placeholder.com/180x270?text=Dinh+4", genre: "Khoa học viễn tưởng", views: "3.1M" }
+        ];
+
+        let foundResults = 0;
+        dummyResults.forEach(movie => {
+          // Simple filtering logic (case-insensitive contains)
+          if (movie.title.toLowerCase().includes(query.toLowerCase()) || movie.genre.toLowerCase().includes(query.toLowerCase())) {
+            const movieItem = document.createElement('div');
+            movieItem.classList.add('movie-item');
+            movieItem.innerHTML = `
+              <img src="${movie.img}" alt="${movie.title}">
+              <p>${movie.title}</p>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h4>${movie.title}</h4>
+                  <p>Thể loại: ${movie.genre}</p>
+                  <p>Lượt xem: ${movie.views}</p>
+                  <button class="view-details-button">Xem chi tiết</button>
+                </div>
+              </div>
+            `;
+            searchResultsGrid.appendChild(movieItem);
+            foundResults++;
+          }
+        });
+
+        if (foundResults === 0) {
+          noResultsMessage.style.display = 'block';
+        } else {
+          noResultsMessage.style.display = 'none';
+        }
+
+        // Re-attach event listeners for "Xem chi tiết" buttons on this new page
+        document.querySelectorAll('.view-details-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                alert('Chức năng "Xem chi tiết" chưa được triển khai. Vui lòng thử lại sau!');
+            });
+        });
+        document.querySelectorAll('.movie-item').forEach(item => {
+            item.addEventListener('click', (event) => {
+                if (!event.target.classList.contains('view-details-button')) {
+                     alert('Chức năng click vào phim để xem chi tiết chưa được triển khai.');
+                }
+            });
+        });
+
+      } else {
+        searchQueryTitle.textContent = "Vui lòng nhập từ khóa để tìm kiếm phim.";
+        noResultsMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
