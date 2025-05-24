@@ -181,34 +181,33 @@ main {
     padding: 20px;
 }
 
-/* Banner Styles */
-.banner {
+/* Banner Carousel Styles */
+.banner-carousel {
+  position: relative;
   width: 100%;
-  height: 400px; /* Chiều cao cố định của banner */
-  background-color: #1f1f1f; /* Màu nền dự phòng */
-  margin-bottom: 20px;
-  position: relative; /* Để định vị banner-item */
-  overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 400px; /* Chiều cao cố định của carousel */
+  overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  animation: fadeIn 1s ease-in-out;
+  margin-bottom: 40px;
+}
+
+.carousel-inner {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
 .banner-item {
-  width: 100%;
+  min-width: 100%;
   height: 100%;
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Căn nội dung xuống dưới */
-  align-items: flex-start; /* Căn nội dung sang trái */
+  align-items: flex-end; /* Căn nội dung xuống dưới */
+  justify-content: flex-start; /* Căn nội dung sang trái */
   padding: 30px;
   box-sizing: border-box;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Thêm đổ bóng chữ */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); /* Gradient phủ lên ảnh */
+  background-color: #1f1f1f; /* Fallback background */
 }
 
 .banner-item img {
@@ -218,23 +217,113 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Đặt ảnh dưới nội dung */
-  filter: brightness(0.7); /* Làm tối ảnh một chút */
+  z-index: -1;
+  filter: brightness(0.7); /* Làm tối ảnh */
 }
 
-.banner-item h3 {
+.banner-content {
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); /* Gradient phủ lên ảnh */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.banner-content h3 {
   font-size: 38px;
   color: #ffcc00;
   margin-bottom: 10px;
   text-align: left;
 }
 
-.banner-item p {
+.banner-content p {
   font-size: 20px;
   color: white;
   text-align: left;
-  max-width: 70%; /* Giới hạn độ rộng chữ */
+  max-width: 70%;
+  margin-bottom: 20px;
 }
+
+.watch-now-button {
+  padding: 12px 25px;
+  background-color: #ffcc00;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.watch-now-button:hover {
+  background-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-control.prev {
+  left: 20px;
+}
+
+.carousel-control.next {
+  right: 20px;
+}
+
+.carousel-control:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active, .dot:hover {
+  background-color: #ffcc00;
+  transform: scale(1.2);
+}
+
 
 .section {
     margin-bottom: 40px;
@@ -355,9 +444,10 @@ h1, h2 {
 }
 
 .movie-item {
+  position: relative; /* Để có thể đặt overlay và text */
+  overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
   background-color: #1f1f1f;
   border-radius: 10px;
-  overflow: hidden;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -379,7 +469,8 @@ h1, h2 {
 }
 
 .movie-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Phóng to nhẹ ảnh */
+    filter: brightness(0.5); /* Làm tối ảnh khi hover */
 }
 
 .movie-item p {
@@ -390,6 +481,72 @@ h1, h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.movie-item:hover p {
+    color: #ffd700;
+}
+
+.movie-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.movie-item:hover .overlay {
+  opacity: 1;
+}
+
+.movie-item .overlay-content {
+  text-align: center;
+}
+
+.movie-item .overlay h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #ffcc00;
+}
+
+.movie-item .overlay p {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 5px;
+  white-space: normal; /* Cho phép xuống dòng */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+  -webkit-box-orient: vertical;
+}
+
+.movie-item .overlay .view-details-button {
+  background-color: #ffcc00;
+  color: #121212;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.movie-item .overlay .view-details-button:hover {
+  background-color: #ffd700;
 }
 
 /* Ranking Tabs Styles */
@@ -429,6 +586,94 @@ h1, h2 {
 
 .ranking-content.active {
   display: block; /* Chỉ hiển thị nội dung active */
+}
+
+/* Auth Form Styles (for login.html and register.html) */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Chiều cao tối thiểu, trừ đi header/footer */
+  padding: 20px;
+}
+
+.auth-form {
+  background-color: #1f1f1f;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.auth-form h2 {
+  color: #ffcc00;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #bbb;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: calc(100% - 24px); /* Trừ padding */
+  padding: 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  background-color: #282828;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #ffcc00;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffcc00;
+  color: #121212;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.auth-form button:hover {
+  background-color: #ffd700;
+}
+
+.form-links {
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.form-links a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.form-links a:hover {
+  color: #ffd700;
+  text-decoration: underline;
 }
 
 
@@ -478,15 +723,35 @@ footer {
     h1, h2 {
         font-size: 26px;
     }
-    .banner {
+    .banner-carousel {
         height: 300px;
     }
-    .banner-item h3 {
+    .banner-content h3 {
         font-size: 30px;
     }
-    .banner-item p {
+    .banner-content p {
         font-size: 16px;
         max-width: 90%;
+    }
+    .watch-now-button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .carousel-control {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      padding: 10px;
+    }
+    .carousel-control.prev {
+      left: 10px;
+    }
+    .carousel-control.next {
+      right: 10px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
     }
     .filters {
         flex-direction: column;
@@ -522,15 +787,28 @@ footer {
         margin-left: 15px;
         margin-right: 15px;
     }
-    .banner {
+    .banner-carousel {
         height: 250px;
         padding: 20px;
     }
-    .banner-item h3 {
+    .banner-content h3 {
         font-size: 24px;
     }
-    .banner-item p {
+    .banner-content p {
         font-size: 14px;
+    }
+    .watch-now-button {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    .carousel-control {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      padding: 8px;
+    }
+    .carousel-dots {
+      bottom: 10px;
     }
     .filters {
         padding: 15px;
@@ -547,5 +825,5 @@ footer {
         padding: 8px 15px;
         font-size: 14px;
     }
-  }
+}
   
