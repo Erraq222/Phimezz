@@ -1,489 +1,325 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phim Online - Trang Chủ</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Rophim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <header>
-    <div class="left-section">
-      <div class="menu-icon" onclick="toggleDropdown()">
-        <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
-      </div>
-      <a class="site-title" href="index.html">Phim Online</a>
-    </div>
-    <div class="right-section">
-        <div class="search-icon" onclick="toggleSearch()">
-          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-          </svg>
+    <header>
+        <div class="logo">
+            <a href="index.html">Rophim</a>
         </div>
-        <div class="user-icon" onclick="window.location.href='login.html'">
-          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Thể loại <span class="arrow-icon"></span></a>
+                    <div class="dropdown-content" id="dropdownMenu">
+                        <div class="dropdown-section">
+                            <h3 class="dropdown-section-title">Phim <span class="toggle-icon">+</span></h3>
+                            <div class="dropdown-section-content">
+                                <a href="tinhcam.html">Tình cảm</a>
+                                <a href="hanhdong.html">Hành động</a>
+                                <a href="haihuoc.html">Hài hước</a>
+                                <a href="#">Kinh dị</a>
+                                <a href="#">Khoa học viễn tưởng</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-section">
+                            <h3 class="dropdown-section-title">Quốc gia <span class="toggle-icon">+</span></h3>
+                            <div class="dropdown-section-content">
+                                <a href="#">Mỹ</a>
+                                <a href="#">Hàn Quốc</a>
+                                <a href="#">Trung Quốc</a>
+                                <a href="#">Việt Nam</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-section">
+                            <h3 class="dropdown-section-title">Năm phát hành <span class="toggle-icon">+</span></h3>
+                            <div class="dropdown-section-content">
+                                <a href="#">2024</a>
+                                <a href="#">2023</a>
+                                <a href="#">2022</a>
+                                <a href="#">2021</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Phim Lẻ</a></li>
+                <li><a href="#">Phim Bộ</a></li>
+                <li><a href="#">Phim Chiếu Rạp</a></li>
+            </ul>
+        </nav>
+        <div class="search-box" id="searchBox">
+            <input type="text" placeholder="Tìm kiếm phim...">
+            <button type="submit">Tìm</button>
         </div>
-    </div>
-  </header>
+        <div class="user-actions">
+            <button class="search-toggle-btn" aria-label="Tìm kiếm">&#128269;</button>
+            <a href="login.html" class="login-btn">Đăng nhập</a>
+        </div>
+    </header>
 
-  <div class="dropdown" id="dropdownMenu">
-    <div class="dropdown-section">
-      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
-        Thể loại <span class="toggle-icon">+</span>
-      </div>
-      <div class="dropdown-section-content">
-        <a href="tinhcam.html">Tình cảm</a>
-        <a href="hanhdong.html">Hành động</a>
-        <a href="haihuoc.html">Hài hước</a>
-        <a href="#">Kinh dị</a>
-        <a href="#">Khoa học viễn tưởng</a>
-      </div>
-    </div>
-    <div class="dropdown-section">
-      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
-        Quốc gia <span class="toggle-icon">+</span>
-      </div>
-      <div class="dropdown-section-content">
-        <a href="#">Việt Nam</a>
-        <a href="#">Hàn Quốc</a>
-        <a href="#">Trung Quốc</a>
-        <a href="#">Mỹ</a>
-        <a href="#">Châu Âu</a>
-      </div>
-    </div>
-  </div>
+    <nav class="quick-links">
+        <a href="#phim-le-moi">Phim Lẻ Mới</a>
+        <a href="#phim-bo-hot">Phim Bộ Hot</a>
+        <a href="#bang-xep-hang">Bảng Xếp Hạng</a>
+        <a href="#phim-sap-chieu">Phim Sắp Chiếu</a>
+    </nav>
 
-  <div class="search-box" id="searchBox">
-    <input type="text" placeholder="Tìm kiếm phim..." />
-    <button>Tìm</button>
-  </div>
+    <main class="container">
+        <section class="hero-banner">
+            <h1>Chào mừng đến với Rophim</h1>
+            <p>Khám phá hàng ngàn bộ phim và chương trình truyền hình</p>
+            </section>
 
-  <main>
-    <div class="banner-carousel">
-      <div class="carousel-inner" id="bannerCarouselInner">
-        <div class="banner-item active">
-          <img src="http://googleusercontent.com/image_generation_content/12" alt="Khom Lung (The Prisoner of Beauty) Chinese drama">
-          <div class="banner-content">
-            <h3>Khom Lung (Chiết Yêu)</h3>
-            <p>Phim cổ trang Trung Quốc đang hot.</p>
-            <button class="watch-now-button">Xem ngay</button>
-          </div>
+        <div class="section movie-carousel-section" id="phim-dien-anh-moi">
+            <div class="section-header">
+                <h2>Phim Điện Ảnh Mới Coóng</h2>
+                <a href="#" class="view-all-link">
+                    <span class="view-all-text">Xem tất cả</span>
+                    <span class="arrow-icon"></span>
+                </a>
+            </div>
+            <div class="movie-carousel-container">
+                <button class="carousel-arrow left-arrow">‹</button>
+                <div class="movie-card-wrapper">
+                    <div class="movie-card">
+                        <img src="images/poster1.jpg" alt="Poster phim 1">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Điều Nhảy Lộng Lẫy</p>
+                            <p class="movie-english-title">Fancy Dance</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster2.jpg" alt="Poster phim 2">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Ostinato</p>
+                            <p class="movie-english-title">Ostinato</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster3.jpg" alt="Poster phim 3">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Gia Tộc Ga'a</p>
+                            <p class="movie-english-title">House of Ga'a</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster4.jpg" alt="Poster phim 4">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Tên phim 4</p>
+                            <p class="movie-english-title">English Title 4</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster5.jpg" alt="Poster phim 5">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Tên phim 5</p>
+                            <p class="movie-english-title">English Title 5</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster6.jpg" alt="Poster phim 6">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Tên phim 6</p>
+                            <p class="movie-english-title">English Title 6</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster7.jpg" alt="Poster phim 7">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Tên phim 7</p>
+                            <p class="movie-english-title">English Title 7</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/poster8.jpg" alt="Poster phim 8">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Tên phim 8</p>
+                            <p class="movie-english-title">English Title 8</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow right-arrow">›</button>
+            </div>
         </div>
-        <div class="banner-item">
-          <img src="https://via.placeholder.com/1920x600?text=Phim+Han+Quoc+Moi" alt="Phim Hàn Quốc mới">
-          <div class="banner-content">
-            <h3>Tên Phim Hàn Hot</h3>
-            <p>Bộ phim tình cảm lãng mạn từ xứ sở Kim Chi.</p>
-            <button class="watch-now-button">Xem ngay</button>
-          </div>
-        </div>
-        <div class="banner-item">
-          <img src="https://via.placeholder.com/1920x600?text=Phim+Khoa+Hoc+Vien+Tuong" alt="Phim khoa học viễn tưởng">
-          <div class="banner-content">
-            <h3>Tên Phim Viễn Tưởng</h3>
-            <p>Khám phá vũ trụ đầy bí ẩn và những cuộc phiêu lưu bất tận.</p>
-            <button class="watch-now-button">Xem ngay</button>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
-      <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
-      <div class="carousel-dots" id="carouselDots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-      </div>
-    </div>
 
-    <div class="section">
-      <h2>Phim Lẻ Mới Nhất</h2>
-      <div class="movie-grid">
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Le+1" alt="Tên phim 1">
-          <p>Tên phim lẻ 1</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim lẻ 1</h4>
-              <p>Thể loại: Hài, Tình cảm</p>
-              <p>Lượt xem: 1.2M</p>
-              <button class="view-details-button">Xem chi tiết</button>
+        <div class="section movie-carousel-section" id="phim-le-moi">
+            <div class="section-header">
+                <h2>Phim Lẻ Mới Nhất</h2>
+                <a href="#" class="view-all-link">
+                    <span class="view-all-text">Xem tất cả</span>
+                    <span class="arrow-icon"></span>
+                </a>
             </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Le+2" alt="Tên phim 2">
-          <p>Tên phim lẻ 2</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim lẻ 2</h4>
-              <p>Thể loại: Hành động, Tâm lý</p>
-              <p>Lượt xem: 980K</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Le+3" alt="Tên phim 3">
-          <p>Tên phim lẻ 3</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim lẻ 3</h4>
-              <p>Thể loại: Kinh dị, Giật gân</p>
-              <p>Lượt xem: 750K</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Le+4" alt="Tên phim 4">
-            <p>Tên phim lẻ 4</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim lẻ 4</h4>
-                <p>Thể loại: Khoa học viễn tưởng</p>
-                <p>Lượt xem: 1.5M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Le+5" alt="Tên phim 5">
-            <p>Tên phim lẻ 5</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim lẻ 5</h4>
-                <p>Thể loại: Hoạt hình, Gia đình</p>
-                <p>Lượt xem: 820K</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Le+6" alt="Tên phim 6">
-            <p>Tên phim lẻ 6</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim lẻ 6</h4>
-                <p>Thể loại: Phiêu lưu, Kỳ ảo</p>
-                <p>Lượt xem: 1.1M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
+            <div class="movie-carousel-container">
+                <button class="carousel-arrow left-arrow">‹</button>
+                <div class="movie-card-wrapper">
+                    <div class="movie-card">
+                        <img src="images/le_poster1.jpg" alt="Phim Lẻ 1">
+                        <div class="movie-info">
+                            <span class="movie-tag">HD</span>
+                            <p class="movie-title">Phim Lẻ Mới 1</p>
+                            <p class="movie-english-title">Solo Movie 1</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/le_poster2.jpg" alt="Phim Lẻ 2">
+                        <div class="movie-info">
+                            <span class="movie-tag">Full HD</span>
+                            <p class="movie-title">Phim Lẻ Mới 2</p>
+                            <p class="movie-english-title">Solo Movie 2</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/le_poster3.jpg" alt="Phim Lẻ 3">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Phim Lẻ Mới 3</p>
+                            <p class="movie-english-title">Solo Movie 3</p>
+                        </div>
+                    </div>
+                     <div class="movie-card">
+                        <img src="images/le_poster4.jpg" alt="Phim Lẻ 4">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Phim Lẻ Mới 4</p>
+                            <p class="movie-english-title">Solo Movie 4</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/le_poster5.jpg" alt="Phim Lẻ 5">
+                        <div class="movie-info">
+                            <span class="movie-tag">Full HD</span>
+                            <p class="movie-title">Phim Lẻ Mới 5</p>
+                            <p class="movie-english-title">Solo Movie 5</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/le_poster6.jpg" alt="Phim Lẻ 6">
+                        <div class="movie-info">
+                            <span class="movie-tag">HD</span>
+                            <p class="movie-title">Phim Lẻ Mới 6</p>
+                            <p class="movie-english-title">Solo Movie 6</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/le_poster7.jpg" alt="Phim Lẻ 7">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Phim Lẻ Mới 7</p>
+                            <p class="movie-english-title">Solo Movie 7</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow right-arrow">›</button>
             </div>
         </div>
-      </div>
-    </div>
 
-    <div class="section">
-      <h2>Phim Bộ Đang Hot</h2>
-      <div class="movie-grid">
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+1" alt="Tên phim 4">
-          <p>Tên phim bộ 1</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim bộ 1</h4>
-              <p>Thể loại: Tâm lý, Tình cảm</p>
-              <p>Lượt xem: 2.1M</p>
-              <button class="view-details-button">Xem chi tiết</button>
+        <div class="section movie-carousel-section" id="phim-bo-hot">
+            <div class="section-header">
+                <h2>Phim Bộ Đang Hot</h2>
+                <a href="#" class="view-all-link">
+                    <span class="view-all-text">Xem tất cả</span>
+                    <span class="arrow-icon"></span>
+                </a>
             </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+2" alt="Tên phim 5">
-          <p>Tên phim bộ 2</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim bộ 2</h4>
-              <p>Thể loại: Hành động, Viễn tưởng</p>
-              <p>Lượt xem: 1.9M</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Phim+Bo+3" alt="Tên phim 6">
-          <p>Tên phim bộ 3</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Tên phim bộ 3</h4>
-              <p>Thể loại: Hài, Gia đình</p>
-              <p>Lượt xem: 1.5M</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+4" alt="Tên phim 7">
-            <p>Tên phim bộ 4</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim bộ 4</h4>
-                <p>Thể loại: Lịch sử, Cổ trang</p>
-                <p>Lượt xem: 2.8M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+5" alt="Tên phim 8">
-            <p>Tên phim bộ 5</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim bộ 5</h4>
-                <p>Thể loại: Trinh thám, Giật gân</p>
-                <p>Lượt xem: 1.3M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Phim+Bo+6" alt="Tên phim 9">
-            <p>Tên phim bộ 6</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Tên phim bộ 6</h4>
-                <p>Thể loại: Học đường, Thanh xuân</p>
-                <p>Lượt xem: 1.7M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
+            <div class="movie-carousel-container">
+                <button class="carousel-arrow left-arrow">‹</button>
+                <div class="movie-card-wrapper">
+                    <div class="movie-card">
+                        <img src="images/bo_poster1.jpg" alt="Phim Bộ 1">
+                        <div class="movie-info">
+                            <span class="movie-tag">Tập 15</span>
+                            <p class="movie-title">Phim Bộ Hot 1</p>
+                            <p class="movie-english-title">Series Hot 1</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster2.jpg" alt="Phim Bộ 2">
+                        <div class="movie-info">
+                            <span class="movie-tag">Full HD</span>
+                            <p class="movie-title">Phim Bộ Hot 2</p>
+                            <p class="movie-english-title">Series Hot 2</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster3.jpg" alt="Phim Bộ 3">
+                        <div class="movie-info">
+                            <span class="movie-tag">Tập 20</span>
+                            <p class="movie-title">Phim Bộ Hot 3</p>
+                            <p class="movie-english-title">Series Hot 3</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster4.jpg" alt="Phim Bộ 4">
+                        <div class="movie-info">
+                            <span class="movie-tag">Tập 5</span>
+                            <p class="movie-title">Phim Bộ Hot 4</p>
+                            <p class="movie-english-title">Series Hot 4</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster5.jpg" alt="Phim Bộ 5">
+                        <div class="movie-info">
+                            <span class="movie-tag">Full HD</span>
+                            <p class="movie-title">Phim Bộ Hot 5</p>
+                            <p class="movie-english-title">Series Hot 5</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster6.jpg" alt="Phim Bộ 6">
+                        <div class="movie-info">
+                            <span class="movie-tag">Tập 10</span>
+                            <p class="movie-title">Phim Bộ Hot 6</p>
+                            <p class="movie-english-title">Series Hot 6</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="images/bo_poster7.jpg" alt="Phim Bộ 7">
+                        <div class="movie-info">
+                            <span class="movie-tag">P.Đề</span>
+                            <p class="movie-title">Phim Bộ Hot 7</p>
+                            <p class="movie-english-title">Series Hot 7</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow right-arrow">›</button>
             </div>
         </div>
-      </div>
-    </div>
 
-    ---
+        <div class="section" id="bang-xep-hang">
+            <h2>Bảng Xếp Hạng Lượt Xem</h2>
+            </div>
 
-    <div class="section">
-      <h2>Bảng Xếp Hạng Lượt Xem</h2>
-      <div class="ranking-tabs">
-        <button class="tab-button active" onclick="showRanking('daily')">Ngày</button>
-        <button class="tab-button" onclick="showRanking('weekly')">Tuần</button>
-        <button class="tab-button" onclick="showRanking('monthly')">Tháng</button>
-      </div>
-      <div id="dailyRanking" class="ranking-content active">
-        <div class="movie-grid">
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Ngay+1" alt="Phim Top Ngày 1">
-            <p>Top Ngày 1</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Ngày 1</h4>
-                <p>Thể loại: Hành động</p>
-                <p>Lượt xem: 5.2M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
+        <div class="section" id="phim-sap-chieu">
+            <h2>Phim Sắp Chiếu</h2>
             </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Ngay+2" alt="Phim Top Ngày 2">
-            <p>Top Ngày 2</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Ngày 2</h4>
-                <p>Thể loại: Tình cảm</p>
-                <p>Lượt xem: 4.8M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Ngay+3" alt="Phim Top Ngày 3">
-            <p>Top Ngày 3</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Ngày 3</h4>
-                <p>Thể loại: Hài hước</p>
-                <p>Lượt xem: 4.1M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Ngay+4" alt="Phim Top Ngày 4">
-            <p>Top Ngày 4</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Ngày 4</h4>
-                <p>Thể loại: Kinh dị</p>
-                <p>Lượt xem: 3.5M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="weeklyRanking" class="ranking-content">
-        <div class="movie-grid">
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Tuan+1" alt="Phim Top Tuần 1">
-            <p>Top Tuần 1</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tuần 1</h4>
-                <p>Thể loại: Khoa học viễn tưởng</p>
-                <p>Lượt xem: 15.2M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Tuan+2" alt="Phim Top Tuần 2">
-            <p>Top Tuần 2</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tuần 2</h4>
-                <p>Thể loại: Phiêu lưu</p>
-                <p>Lượt xem: 13.8M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Tuan+3" alt="Phim Top Tuần 3">
-            <p>Top Tuần 3</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tuần 3</h4>
-                <p>Thể loại: Tài liệu</p>
-                <p>Lượt xem: 11.5M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="monthlyRanking" class="ranking-content">
-        <div class="movie-grid">
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Thang+1" alt="Phim Top Tháng 1">
-            <p>Top Tháng 1</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tháng 1</h4>
-                <p>Thể loại: Chiến tranh</p>
-                <p>Lượt xem: 45M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Thang+2" alt="Phim Top Tháng 2">
-            <p>Top Tháng 2</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tháng 2</h4>
-                <p>Thể loại: Thể thao</p>
-                <p>Lượt xem: 38M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Thang+3" alt="Phim Top Tháng 3">
-            <p>Top Tháng 3</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tháng 3</h4>
-                <p>Thể loại: Ca nhạc</p>
-                <p>Lượt xem: 32M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Thang+4" alt="Phim Top Tháng 4">
-            <p>Top Tháng 4</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tháng 4</h4>
-                <p>Thể loại: Gia đình</p>
-                <p>Lượt xem: 29M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-          <div class="movie-item">
-            <img src="https://via.placeholder.com/180x270?text=Top+Thang+5" alt="Phim Top Tháng 5">
-            <p>Top Tháng 5</p>
-            <div class="overlay">
-              <div class="overlay-content">
-                <h4>Top Tháng 5</h4>
-                <p>Thể loại: Bí ẩn</p>
-                <p>Lượt xem: 25M</p>
-                <button class="view-details-button">Xem chi tiết</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </main>
 
-    ---
+    <footer>
+        <p>&copy; 2025 Rophim. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Về chúng tôi</a>
+            <a href="#">Điều khoản sử dụng</a>
+            <a href="#">Chính sách bảo mật</a>
+            <a href="#">Liên hệ</a>
+        </div>
+    </footer>
 
-    <div class="section">
-      <h2>Phim Sắp Chiếu</h2>
-      <div class="movie-grid">
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Sap+Chieu+1" alt="Phim Sắp Chiếu 1">
-          <p>Sắp Chiếu 1</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Sắp Chiếu 1</h4>
-              <p>Thể loại: Phiêu lưu</p>
-              <p>Ngày dự kiến: 2025-06-15</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Sap+Chieu+2" alt="Phim Sắp Chiếu 2">
-          <p>Sắp Chiếu 2</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Sắp Chiếu 2</h4>
-              <p>Thể loại: Tâm lý</p>
-              <p>Ngày dự kiến: 2025-07-01</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Sap+Chieu+3" alt="Phim Sắp Chiếu 3">
-          <p>Sắp Chiếu 3</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Sắp Chiếu 3</h4>
-              <p>Thể loại: Hài hước</p>
-              <p>Ngày dự kiến: 2025-07-20</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-        <div class="movie-item">
-          <img src="https://via.placeholder.com/180x270?text=Sap+Chieu+4" alt="Phim Sắp Chiếu 4">
-          <p>Sắp Chiếu 4</p>
-          <div class="overlay">
-            <div class="overlay-content">
-              <h4>Sắp Chiếu 4</h4>
-              <p>Thể loại: Hành động</p>
-              <p>Ngày dự kiến: 2025-08-05</p>
-              <button class="view-details-button">Xem chi tiết</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Phim Online. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
   </html>
-                
+                      
