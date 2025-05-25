@@ -5,7 +5,7 @@ body {
     padding: 0;
     background-color: #121212; /* Dark background */
     color: #fff;
-    scroll-behavior: smooth; /* Smooth scroll for anchor links */
+    /* scroll-behavior: smooth; */ /* Bỏ cái này đi vì chưa có smooth scroll dọc */
 }
 
 a {
@@ -216,33 +216,6 @@ header {
     cursor: pointer;
 }
 
-/* Quick Links Navigation Styles */
-.quick-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px 20px;
-    background-color: #1f1f1f; /* Màu nền tối */
-    border-bottom: 1px solid #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px; /* Khoảng cách với nội dung bên dưới */
-}
-
-.quick-links a {
-    color: #ffcc00; /* Màu vàng cam */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.quick-links a:hover {
-    background-color: #ffcc00;
-    color: #121212; /* Màu chữ tối khi hover */
-}
-
 /* Main Container */
 .container {
     max-width: 1200px;
@@ -270,90 +243,26 @@ header {
     color: #ccc;
 }
 
-/* Styling cho các section phim */
+/* Styling for generic movie sections and grid */
 .section {
     margin-bottom: 40px;
-    padding: 0 20px; /* Thêm padding để nội dung không chạm biên */
+    padding: 0 20px;
 }
 
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
+.section h2 {
     color: #fff;
     font-size: 28px;
     font-weight: bold;
-    margin: 0;
+    margin-bottom: 20px;
 }
 
-.view-all-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s ease;
-}
-
-.view-all-link:hover {
-    color: #ffcc00; /* Màu vàng cam khi hover */
-}
-
-.view-all-text {
-    margin-right: 5px;
-}
-
-.arrow-icon::after {
-    content: '>'; /* Mũi tên > */
-    display: inline-block;
-    margin-left: 5px;
-    transition: transform 0.2s ease;
-}
-
-.view-all-link:hover .arrow-icon::after {
-    transform: translateX(3px); /* Hiệu ứng mũi tên dịch nhẹ khi hover */
-}
-
-/* CAROUSEL STYLES */
-.movie-carousel-section {
-    position: relative; /* Để các mũi tên có thể định vị tương đối với section */
-    margin-bottom: 40px;
-    padding: 0; /* Bỏ padding cũ để movie-carousel-container tự căn lề */
-}
-
-.movie-carousel-container {
-    display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    overflow: hidden; /* Quan trọng: ẩn phần bị tràn */
-    position: relative;
-    padding: 0 20px; /* Padding cho phép các mũi tên nằm bên ngoài ảnh hưởng đến scrollbar */
-}
-
-.movie-card-wrapper {
-    display: flex; /* Biến các movie-card thành hàng ngang */
-    gap: 20px; /* Khoảng cách giữa các poster */
-    overflow-x: scroll; /* Kích hoạt thanh cuộn ngang */
-    scroll-behavior: smooth; /* Cuộn mượt mà khi dùng JS hoặc kéo */
-    -webkit-overflow-scrolling: touch; /* Tối ưu cho thiết bị di động */
-    scrollbar-width: none; /* Ẩn scrollbar cho Firefox */
-    -ms-overflow-style: none;  /* Ẩn scrollbar cho IE/Edge */
-    padding-bottom: 15px; /* Để tránh poster bị che mất bởi scrollbar ẩn */
-    margin-bottom: -15px; /* Điều chỉnh để padding-bottom không làm tăng chiều cao section */
-    flex-grow: 1; /* Cho phép nó giãn nở */
-}
-
-/* Ẩn scrollbar cho Chrome, Safari, Opera */
-.movie-card-wrapper::-webkit-scrollbar {
-    display: none;
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
 }
 
 .movie-card {
-    flex-shrink: 0; /* Ngăn không cho các poster bị co lại */
-    width: 200px; /* Chiều rộng cố định cho mỗi poster */
     background-color: #1a1a1a;
     border-radius: 8px;
     overflow: hidden;
@@ -363,13 +272,13 @@ header {
 }
 
 .movie-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+    transform: translateY(-5px); /* Lift effect on hover */
 }
 
 .movie-card img {
     width: 100%;
-    height: 300px; /* Chiều cao cố định cho ảnh poster */
-    object-fit: cover; /* Đảm bảo ảnh vừa khung mà không bị méo */
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensure image covers the area */
     border-bottom: 1px solid #333;
 }
 
@@ -383,8 +292,8 @@ header {
     position: absolute;
     top: 5px;
     left: 5px;
-    background-color: #ffcc00; /* Màu vàng cam cho tag */
-    color: #121212; /* Màu chữ tối */
+    background-color: #ffcc00;
+    color: #121212;
     padding: 3px 8px;
     border-radius: 3px;
     font-size: 12px;
@@ -396,9 +305,9 @@ header {
     font-size: 16px;
     font-weight: bold;
     margin-top: 5px;
-    white-space: nowrap; /* Ngăn tiêu đề xuống dòng */
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu dài quá */
+    text-overflow: ellipsis;
 }
 
 .movie-english-title {
@@ -409,40 +318,6 @@ header {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-/* Carousel navigation arrows */
-.carousel-arrow {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border: none;
-    font-size: 30px;
-    padding: 10px 15px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10; /* Đảm bảo mũi tên nằm trên các poster */
-    border-radius: 50%;
-    width: 50px; /* Đảm bảo hình tròn */
-    height: 50px; /* Đảm bảo hình tròn */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.left-arrow {
-    left: 0px; /* Nằm sát lề trái của carousel container */
-}
-
-.right-arrow {
-    right: 0px; /* Nằm sát lề phải của carousel container */
-}
-
 
 /* Footer */
 footer {
@@ -495,25 +370,17 @@ footer {
         min-width: 200px;
     }
 
-    /* Responsive adjustments for quick-links */
-    .quick-links {
-        flex-wrap: wrap; /* Cho phép các mục xuống dòng trên màn hình nhỏ */
-        gap: 10px;
-        padding: 10px 15px;
+    /* Movie Grid Responsive */
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
-    .quick-links a {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
-
-    /* Carousel */
     .movie-card {
-        width: 180px; /* Giảm kích thước trên màn hình nhỏ hơn */
+        width: auto; /* Let grid handle width */
     }
     .movie-card img {
         height: 270px;
     }
-    .section-header h2 {
+    .section h2 {
         font-size: 24px;
     }
 }
@@ -577,22 +444,16 @@ footer {
     }
 
     .section {
-        padding: 0 10px; /* Giảm padding trên mobile */
+        padding: 0 10px;
     }
-    .section-header h2 {
+    .section h2 {
         font-size: 22px;
     }
-    .movie-card {
-        width: 160px; /* Further reduce size */
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
     .movie-card img {
-        height: 240px;
-    }
-    .carousel-arrow {
-        font-size: 25px;
-        padding: 8px 12px;
-        width: 40px;
-        height: 40px;
+        height: 210px;
     }
 }
 
@@ -607,7 +468,7 @@ footer {
         text-align: center;
     }
     .dropdown-content {
-        position: static; /* Allow dropdown to flow with content */
+        position: static;
         transform: none;
         width: 100%;
         max-width: none;
@@ -642,8 +503,8 @@ footer {
         font-size: 14px;
     }
 
-    .movie-card {
-        width: 120px;
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
     .movie-card img {
         height: 180px;
@@ -656,15 +517,5 @@ footer {
     }
     .movie-english-title {
         font-size: 12px;
-    }
-    .carousel-arrow {
-        display: none; /* Có thể ẩn mũi tên trên màn hình quá nhỏ để người dùng tự cuộn */
-    }
-    .movie-carousel-container {
-        padding: 0 5px; /* Giảm padding container để tận dụng diện tích */
-    }
-    .quick-links {
-        flex-direction: column;
-        align-items: center;
     }
 }
