@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim Online - Hài Hước</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <div class="menu-icon" onclick="toggleDropdown()">
+        <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </div>
+      <a class="site-title" href="index.html">Phim Online</a>
+    </div>
+    <div class="right-section">
+        <div class="search-icon" onclick="toggleSearch()">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </div>
+        <div class="user-icon" onclick="window.location.href='login.html'">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+    </div>
+  </header>
+
+  <div class="dropdown" id="dropdownMenu">
+    <div class="dropdown-section">
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Thể loại <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="tinhcam.html">Tình cảm</a>
+        <a href="hanhdong.html">Hành động</a>
+        <a href="haihuoc.html">Hài hước</a>
+        <a href="#">Kinh dị</a>
+        <a href="#">Khoa học viễn tưởng</a>
+      </div>
+    </div>
+    <div class="dropdown-section">
+      <div class="dropdown-section-title" onclick="toggleDropdownSection(this)">
+        Quốc gia <span class="toggle-icon">+</span>
+      </div>
+      <div class="dropdown-section-content">
+        <a href="#">Việt Nam</a>
+        <a href="#">Hàn Quốc</a>
+        <a href="#">Trung Quốc</a>
+        <a href="#">Mỹ</a>
+        <a href="#">Châu Âu</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Tìm kiếm phim..." />
+    <button>Tìm</button>
+  </div>
+
+  <main>
+    <h1>Phim Hài Hước</h1>
+
+    <div class="filters-container">
+      <button class="filter-toggle" onclick="toggleFilters()">Bộ lọc nâng cao</button>
+      <div class="filters" id="filterSection">
+        <select>
+          <option value="">Quốc gia</option>
+          <option value="all">Tất cả</option>
+          <option value="vn">Việt Nam</option>
+          <option value="kr">Hàn Quốc</option>
+          <option value="cn">Trung Quốc</option>
+          <option value="us">Mỹ</option>
+          <option value="fr">Pháp</option>
+          <option value="uk">Anh</option>
+        </select>
+        <select>
+          <option value="">Loại phim</option>
+          <option value="all">Tất cả</option>
+          <option value="single">Phim lẻ</option>
+          <option value="series">Phim bộ</option>
+        </select>
+        <select>
+          <option value="">Thể loại</option>
+          <option value="romantic">Lãng mạn</option>
+          <option value="action">Hành động</option>
+          <option value="horror">Kinh dị</option>
+          <option value="comedy">Hài hước</option>
+        </select>
+        <select>
+          <option value="">Năm sản xuất</option>
+          <option value="all">Tất cả</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+        </select>
+        <select>
+          <option value="">Sắp xếp theo</option>
+          <option value="newest">Mới nhất</option>
+          <option value="views">Lượt xem</option>
+          <option value="rating">Điểm đánh giá</option>
+        </select>
+        <button class="filter-submit" onclick="applyFilter()">Lọc phim</button>
+      </div>
+    </div>
+
+    <div class="movie-grid">
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+1" alt="Phim 1: Ông Bà Anh">
+        <p>Ông Bà Anh</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Ông Bà Anh</h4>
+            <p>Thể loại: Hài hước, Gia đình</p>
+            <p>Lượt xem: 4.0M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+2" alt="Phim 2: Siêu Quậy Học Đường">
+        <p>Siêu Quậy Học Đường</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Siêu Quậy Học Đường</h4>
+            <p>Thể loại: Hài hước, Học đường</p>
+            <p>Lượt xem: 3.5M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+3" alt="Phim 3: Thám Tử Vụng Về">
+        <p>Thám Tử Vụng Về</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Thám Tử Vụng Về</h4>
+            <p>Thể loại: Hài hước, Bí ẩn</p>
+            <p>Lượt xem: 3.2M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+4" alt="Phim 4: Cuộc Phiêu Lưu Của Chuột">
+        <p>Cuộc Phiêu Lưu Của Chuột</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Cuộc Phiêu Lưu Của Chuột</h4>
+            <p>Thể loại: Hài hước, Hoạt hình</p>
+            <p>Lượt xem: 2.9M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+5" alt="Phim 5: Kẻ Trộm Của Bà">
+        <p>Kẻ Trộm Của Bà</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Kẻ Trộm Của Bà</h4>
+            <p>Thể loại: Hài hước, Tội phạm</p>
+            <p>Lượt xem: 2.7M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-item">
+        <img src="https://via.placeholder.com/180x270?text=Comedy+6" alt="Phim 6: Chú Chó Đại Náo">
+        <p>Chú Chó Đại Náo</p>
+        <div class="overlay">
+          <div class="overlay-content">
+            <h4>Chú Chó Đại Náo</h4>
+            <p>Thể loại: Hài hước, Động vật</p>
+            <p>Lượt xem: 2.5M</p>
+            <button class="view-details-button">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Phim Online. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
